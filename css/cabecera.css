@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+}
+.fondobarra{
+    background-color: #0F1729;
+}
+
+.texto-blanco a {
+    color: #DFAE34;
+}
+.texto-blanco a:hover{
+    color: #856516;
+}
+.navbar-elegante .nav-link {
+    color: white !important;
+    font-family: 'Playfair Display', serif; /* Fuente elegante */
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px; /* Espacio entre letras */
+    text-transform: uppercase; /* MAYÚSCULAS */
+    position: relative;
+    transition: all 0.4s ease;
+    padding: 8px 15px !important;
+}
+
+/* Línea dorada que aparece debajo al hacer hover */
+.navbar-elegante .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #DFAE34;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-elegante .nav-link:hover::after,
+.navbar-elegante .nav-link.active::after {
+    width: 70%;
+}
+
+.navbar-elegante .nav-link:hover,
+.navbar-elegante .nav-link.active {
+    color: #DFAE34 !important;
+    text-shadow: 0 0 8px rgba(223, 174, 52, 0.3); /* Brillo suave */
+}
+.logo-responsive {
+    height: 60px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .logo-responsive {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-responsive {
+        height: 40px;
+    }
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.custom-toggler:hover {
+    border: 2px solid #DFAE34 !important;
+    border-radius: 6px;
+}
