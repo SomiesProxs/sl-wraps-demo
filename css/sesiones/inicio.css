@@ -1,0 +1,137 @@
+.carousel-indicators {
+  bottom: 100px; /* distancia desde abajo */
+}
+.carousel-indicators [data-bs-target] {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #A1A3A9;
+  margin: 0 5px;
+  transition: all 0.3s ease; /* 🔹 animación suave */
+}
+
+.carousel-indicators .active {
+  width: 50px; /* 🔹 se estira horizontalmente */
+  border-radius: 50%; /* 🔹 forma de pastilla */
+  background-color: #3C83F6;
+}
+
+
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 2, 15, 0.35); /* 🔹 Azul con opacidad baja */
+  z-index: 1;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: calc(100vh - 70px);
+  width: 100%;
+}
+
+/* Asegura que el texto esté por encima del overlay */
+.carousel-caption {
+  position: absolute;
+  z-index: 2;
+}
+
+
+
+/* Contenedor del texto centrado */
+.carousel-caption {
+  position: absolute;
+  bottom: clamp(1px, 10vh, 150px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+  z-index: 10;
+}
+
+/* Título */
+.carousel-title {
+  font-weight: bold;    
+  color: #ffffff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.5rem;
+  font-size: clamp(14px, 5vw, 80px);
+
+}
+
+.azul {
+  color: #3F84F4; /* azul */
+}
+
+.naranja {
+  color: #DE7436; /* anaranjado */
+}
+
+/* Subtítulo */
+.carousel-subtitle {
+  color: #ffffff;
+  font-size: clamp(5px, 5vw, 25px);
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 1168px) {
+  .carousel-item img {
+  height: 500px; /* Ocupa el 100% del alto visible del navegador */
+}
+.carousel-indicators {
+  bottom: 30px; /* distancia desde abajo */
+}
+.carousel-caption {
+  bottom: clamp(1px, 10vh, 50px);
+  width: 100%;
+}
+/* Título */
+.carousel-title {
+  font-size: clamp(14px, 5vw, 70px);
+}
+
+/* Subtítulo */
+.carousel-subtitle {
+  font-size: clamp(5px, 5vw, 20px);
+}
+}
+
+
+@media (max-width: 468px) {
+.carousel-indicators {
+  bottom: -5px; /* distancia desde abajo */
+}
+.carousel-indicators [data-bs-target] {
+  width: 7px;
+  height: 7px;
+}
+.carousel-indicators .active {
+  width: 20px;
+}
+.carousel-item img {
+  height: 200px;
+}
+/* Contenedor del texto centrado */
+.carousel-caption {
+  bottom: clamp(1px, 10vh, 20px);
+}
+
+/* Título */
+.carousel-title {
+  font-size: clamp(14px, 5vw, 30px);
+}
+
+/* Subtítulo */
+.carousel-subtitle {
+  font-size: clamp(5px, 5vw, 10px);
+}
+}

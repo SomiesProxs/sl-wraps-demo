@@ -29,7 +29,7 @@
 <body>
 
 <div id="cabecera"></div>
-
+<div id="inicio"></div>
   <script>
     fetch('cabecera.html')
       .then(response => response.text())
@@ -37,9 +37,15 @@
         document.getElementById('cabecera').innerHTML = data;
       });
   </script>
+  <script>
+    fetch('sesiones/inicio.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('inicio').innerHTML = data;
+      });
+  </script>
 
-  <!-- Resto del contenido -->
-  <h1>Bienvenido</h1>
+
 
 </body>
 
