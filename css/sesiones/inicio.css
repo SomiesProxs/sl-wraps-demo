@@ -83,6 +83,34 @@
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
 }
 
+.whatsapp-btn {
+  background: linear-gradient(90deg, #007bff 0%, #ff7f00 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Hover y active */
+.whatsapp-btn:hover {
+  opacity: 1.9;
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.96);
+}
+
+.whatsapp-btn i {
+  font-size: 18px;
+}
+
 @media (max-width: 1168px) {
   .carousel-item img {
   height: 500px; /* Ocupa el 100% del alto visible del navegador */
@@ -103,6 +131,14 @@
 .carousel-subtitle {
   font-size: clamp(5px, 5vw, 20px);
 }
+  .whatsapp-btn {
+    padding: 7px 11px;
+    font-size: 12px;
+  }
+
+  .whatsapp-btn i {
+    font-size: 16px;
+  }
 }
 
 
@@ -118,7 +154,7 @@
   width: 20px;
 }
 .carousel-item img {
-  height: 200px;
+  height: 250px;
 }
 /* Contenedor del texto centrado */
 .carousel-caption {
@@ -134,4 +170,14 @@
 .carousel-subtitle {
   font-size: clamp(5px, 5vw, 10px);
 }
+  .whatsapp-btn {
+    padding: 3px 6px;
+    font-size: 7px;
+    border-radius: 25px;
+    gap: 6px;
+  }
+
+  .whatsapp-btn i {
+    font-size: 10px;
+  }
 }
