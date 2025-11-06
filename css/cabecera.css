@@ -14,8 +14,8 @@
 .navbar-elegante .nav-link {
     color: white !important;
     font-family: "Rowdies", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+    font-weight: 300;
+    font-style: normal;
     font-size: 1.1rem;
     letter-spacing: 1.5px; /* Espacio entre letras */
     text-transform: uppercase; /* MAYÚSCULAS */
@@ -63,7 +63,7 @@
     border-radius: 6px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
     .logo-responsive {
         height: 50px;
     }
