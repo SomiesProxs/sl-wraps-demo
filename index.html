@@ -44,6 +44,13 @@
         document.getElementById('inicio').innerHTML = data;
       });
   </script>
+  <script>
+    fetch('sesiones/servicio.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('servicio').innerHTML = data;
+      });
+  </script>
 
 
 
