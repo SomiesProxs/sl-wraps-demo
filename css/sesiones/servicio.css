@@ -5,7 +5,7 @@
   }
 
   .titulo-seccion {
-    font-size: 3.2rem;
+    font-size: 50px;
     color: #000;
     font-family: "Rowdies", sans-serif;
     font-weight: 400;
@@ -110,14 +110,70 @@
 }
 
 /* === MÓVIL: Tarjetas más cuadradas, pero SIN achicar texto === */
-@media (max-width: 767.98px) {
+@media (max-width: 1168px) {
   .servicios-section {
     padding-top: 2.5rem;
     padding-bottom: 3rem;
   }
 
   .titulo-seccion {
-    font-size: 2.2rem;
+    font-size: 40px;
+  }
+
+  /* Forzamos que la imagen tenga altura fija, pero no tan alta */
+  .card-img-wrapper {
+    height: 180px; /* Altura fija más baja que 220px */
+    overflow: hidden;
+  }
+
+  .card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Ajustamos el overlay para que no se vea cortado */
+  .card-overlay {
+    padding: 1rem;
+    justify-content: flex-end;
+  }
+
+  .overlay-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .overlay-subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Body: padding más compacto pero legible */
+  .card-body {
+    padding: 1.2rem;
+  }
+
+  .card-text {
+    font-size: 1rem; /* ¡Mantenemos tamaño legible! */
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Botón: más pequeño pero NO diminuto */
+  .btn-primary {
+    padding: 0.65rem 1.2rem;
+    font-size: 1rem; /* ¡Legible! */
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 468px) {
+  .servicios-section {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .titulo-seccion {
+    font-size: 40px;
   }
 
   /* Forzamos que la imagen tenga altura fija, pero no tan alta */
