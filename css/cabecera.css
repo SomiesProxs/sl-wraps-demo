@@ -158,8 +158,31 @@
         padding: 10px 0;
       }
 
-      .menu a {
-        display: block;
-        padding: 8px 0;
-      }
+.menu a {
+  display: block;
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: menuFadeIn 0.5s ease forwards;
+}
+
+/* Animación con leve desplazamiento hacia arriba */
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Opcional: para que entren uno tras otro con leve retraso */
+.menu li:nth-child(1) a { animation-delay: 0.1s; }
+.menu li:nth-child(2) a { animation-delay: 0.2s; }
+.menu li:nth-child(3) a { animation-delay: 0.3s; }
+.menu li:nth-child(4) a { animation-delay: 0.4s; }
+.menu li:nth-child(5) a { animation-delay: 0.5s; }
+
     }
