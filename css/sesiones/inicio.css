@@ -1,23 +1,39 @@
 .carousel-indicators {
   bottom: 100px; /* distancia desde abajo */
 }
-.carousel-indicators [data-bs-target] {
+/* Asegúrate de apuntar a los botones que usa Bootstrap 5 */
+.carousel-indicators button[data-bs-slide-to],
+.carousel-indicators [data-bs-target][data-bs-slide-to] {
+  display: inline-block;         /* permite cambiar width */
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background-color: #A1A3A9;
   margin: 0 5px;
-  transition: all 0.3s ease; /* 🔹 animación suave */
+  border: none;                  /* si hay borde por defecto */
+  padding: 0;
+  transition: width 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  z-index: 3;                    /* encima del overlay */
 }
 
-.carousel-indicators .active {
-  width: 50px; /* 🔹 se estira horizontalmente */
-  border-radius: 50%; /* 🔹 forma de pastilla */
+/* Indicador activo — se estira */
+.carousel-indicators .active,
+.carousel-indicators button[aria-current="true"] {
+  width: 50px;
+  border-radius: 50px;           /* pastilla */
   background-color: #3C83F6;
 }
 
+/* Si Bootstrap usa <li> o <button>, esta regla cubre ambos casos */
+.carousel-indicators {
+  z-index: 3;                    /* aseguramos que esté por encima */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
-
+/* Overlay: dejar debajo de controles e indicadores */
 .carousel-item {
   position: relative;
 }
@@ -29,9 +45,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 2, 15, 0.35); /* 🔹 Azul con opacidad baja */
-  z-index: 1;
+  background-color: rgba(0, 2, 15, 0.35);
+  z-index: 0;                     /* <<— estaba en 1; lo ponemos 0 */
+  pointer-events: none;           /* que no interfiera con clicks */
 }
+
+/* Si el overlay tapa textos dentro del item, sube el z-index de .carousel-caption */
+/* Si el overlay tapa textos dentro del item, sube el z-index de .carousel-caption */
+.carousel-caption {
+  position: relative;
+  z-index: 2;
+}
+
 
 .carousel-item img {
   object-fit: cover;
