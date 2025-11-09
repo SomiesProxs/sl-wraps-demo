@@ -31,24 +31,63 @@
 <div id="cabecera"></div>
 <div id="inicio"></div>
 <div id="servicio"></div>
+<script>
+  fetch('cabecera.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('cabecera').innerHTML = data;
 
+      // ✅ Ejecutar el script después de insertar la cabecera
+      inicializarCabecera();
+    });
 
-  <script>
-    fetch('cabecera.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('cabecera').innerHTML = data;
+  function inicializarCabecera() {
+    const langButton = document.querySelector(".boton-centrop");
+    const menuItems = document.querySelectorAll("#menuNav .nav-link");
+    const flagImg = langButton.querySelector("img");
+    const langText = langButton.querySelector("span");
+
+    const translations = {
+      es: ["Inicio", "Servicios", "Galería", "Contacto", "Nosotros"],
+      en: ["Home", "Services", "Gallery", "Contact", "Us"],
+    };
+
+    document.querySelectorAll(".dropdown-item").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const selectedLang = item.textContent.trim();
+
+        if (selectedLang === "Español") {
+          langText.textContent = "Spanish";
+          flagImg.src = "https://flagcdn.com/w20/es.png";
+          menuItems.forEach((link, i) => link.textContent = translations.es[i]);
+        } else if (selectedLang === "Inglés") {
+          langText.textContent = "English";
+          flagImg.src = "https://flagcdn.com/w20/gb.png";
+          menuItems.forEach((link, i) => link.textContent = translations.en[i]);
+        }
       });
-  </script>
+    });
+  }
+</script>
+
+
   <script>
     fetch('sesiones/inicio.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('inicio').innerHTML = data;
+
+        // Reinicializar el carrusel de Bootstrap manualmente
+        const carouselElement = document.querySelector('#carouselExampleIndicators');
+        if (carouselElement) {
+          const carousel = new bootstrap.Carousel(carouselElement, {
+            interval: 2000, // tiempo entre slides (4 segundos)
+            ride: 'carousel'
+          });
+        }
       });
   </script>
-
-
 
   <script>
     fetch('sesiones/servicio.html')
@@ -57,6 +96,8 @@
         document.getElementById('servicio').innerHTML = data;
       });
   </script>
+
+
 
 </body>
 

@@ -5,8 +5,8 @@
 .carousel-indicators button[data-bs-slide-to],
 .carousel-indicators [data-bs-target][data-bs-slide-to] {
   display: inline-block;         /* permite cambiar width */
-  width: 15px;
-  height: 15px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background-color: #A1A3A9;
   margin: 0 5px;
@@ -60,7 +60,7 @@
 
 .carousel-item img {
   object-fit: cover;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 60px);
   width: 100%;
 }
 
@@ -83,22 +83,27 @@
   z-index: 10;
 }
 
+/* Animación de entrada desde abajo */
+@keyframes slideUpFade {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Título */
 .carousel-title {
-  font-weight: bold;    
+  font-weight: bold;
   color: #ffffff;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-  
   font-size: clamp(14px, 5vw, 80px);
-
-}
-
-.azul {
-  color: #3F84F4; /* azul */
-}
-
-.naranja {
-  color: #DE7436; /* anaranjado */
+  opacity: 0;
+  animation: slideUpFade 1s ease-out forwards;
+  animation-delay: 0.2s; /* pequeño retardo para un efecto más suave */
 }
 
 /* Subtítulo */
@@ -107,6 +112,17 @@
   font-size: clamp(5px, 5vw, 25px);
   text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
   margin-bottom: 10.5rem;
+  opacity: 0;
+  animation: slideUpFade 1s ease-out forwards;
+  animation-delay: 0.5s; /* aparece un poco después del título */
+}
+
+.azul {
+  color: #3F84F4; /* azul */
+}
+
+.naranja {
+  color: #DE7436; /* anaranjado */
 }
 
 .whatsapp-btn {
@@ -139,6 +155,14 @@
 }
 
 @media (max-width: 1468px) {
+
+.carousel-indicators button[data-bs-slide-to],
+.carousel-indicators [data-bs-target][data-bs-slide-to] {
+  width: 11px;
+  height: 11px;
+}
+
+
   .carousel-item img {
   height: 500px; /* Ocupa el 100% del alto visible del navegador */
 }
@@ -156,7 +180,7 @@
 
 /* Subtítulo */
 .carousel-subtitle {
-  font-size: clamp(5px, 5vw, 20px);
+  font-size: clamp(5px, 5vw, 18px);
    margin-bottom: 4.5rem;
 }
   .whatsapp-btn {
@@ -168,6 +192,8 @@
   .whatsapp-btn i {
     font-size: 16px;
   }
+  
+
 }
 
 
@@ -175,9 +201,10 @@
 .carousel-indicators {
   bottom: -5px; /* distancia desde abajo */
 }
-.carousel-indicators [data-bs-target] {
-  width: 7px;
-  height: 7px;
+.carousel-indicators button[data-bs-slide-to],
+.carousel-indicators [data-bs-target][data-bs-slide-to] {
+  width: 11px;
+  height: 11px;
 }
 .carousel-indicators .active {
   width: 20px;
