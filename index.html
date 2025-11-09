@@ -30,6 +30,7 @@
 
 <div id="cabecera"></div>
 <div id="inicio"></div>
+<div id="servicio"></div>
   <script>
     fetch('cabecera.html')
       .then(response => response.text())
@@ -44,7 +45,7 @@
         document.getElementById('inicio').innerHTML = data;
       });
   </script>
-  
+
   <script>
     fetch('sesiones/servicio.html')
       .then(response => response.text())
