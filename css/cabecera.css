@@ -7,7 +7,7 @@
 
     .logo img {
       height: 50px;
-    content: url("img/logo.png"); /* imagen por defecto (PC) */
+    content: url("./img/logo.png"); /* imagen por defecto (PC) */
     }
   .boton-centrop {
     background-color: transparent; /* fondo transparente */
@@ -141,7 +141,7 @@
         order: 1;
       }
 .logo img {
-    content: url("img/logocelular.png"); /* cambia solo la imagen */
+    content: url("./img/logocelular.png"); /* cambia solo la imagen */
     height: 45px; /* opcional: ajusta el tamaño si quieres */
   }
       .navbar-toggler {
