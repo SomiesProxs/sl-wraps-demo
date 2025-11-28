@@ -1,0 +1,121 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/sesiones/contactos.css">
+  <title>Nuestros Trabajos</title>
+</head>
+
+<section class="py-5" style="background-color:#FFFAE4;">
+  <div class="container py-5">
+
+    <!-- Título y subtítulo centrados -->
+    <div class="text-center mb-5">
+      <h2 class="display-5 fw-bold text-dark">¡Hablemos de tu <span class="naranja">Proyecto!</span></h2>
+      <p class="lead text-muted">
+        Completa el formulario y recibe una cotización personalizada en menos de 24 horas
+      </p>
+    </div>
+
+    <div class="row g-5 align-items-start">
+
+      <!-- ===== LADO IZQUIERDO: Formulario ===== -->
+      <div class="col-lg-7">
+        <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg" style="border-radius:20px;">
+          <form action="https://formspree.io/f/YOUR_CODE" method="POST">
+
+            <div class="mb-4">
+              <label class="form-label fw-bold">Nombre Completo <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-lg rounded-pill" placeholder="Juan Pérez" name="nombre" required>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-bold">Email <span class="text-danger">*</span></label>
+              <input type="email" class="form-control form-control-lg rounded-pill" placeholder="juan@ejemplo.com" name="email" required>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-bold">Teléfono</label>
+              <input type="tel" class="form-control form-control-lg rounded-pill" placeholder="+1 (555) 123-4567" name="telefono">
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-bold">Descripción del Proyecto</label>
+              <textarea class="form-control rounded-3" rows="6" placeholder="Cuéntanos sobre tu vehículo y qué tipo de wrap necesitas..." name="mensaje"></textarea>
+            </div>
+
+            <div class="text-center mt-4">
+              <button type="submit" class="btn btn-lg px-5 py-3 rounded-pill shadow btn-gradient text-white">
+                Enviar Cotización
+              </button>
+            </div>
+          </form>
+
+          <!-- Aviso de fotos (lo dejamos como estaba, centrado y bonito) -->
+          <div class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4">
+            <div class="text-center">
+              <i class="fas fa-camera fa-2x text-warning mb-3"></i>
+              <p class="mb-0 fw-bold text-dark fs-5">
+                No olvides adjuntar tus fotos directamente en el correo para que podamos ver tu vehículo y ofrecerte una mejor propuesta.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== LADO DERECHO: Información ===== -->
+      <div class="col-lg-5">
+
+        <!-- Información de Contacto -->
+        <div class="bg-gradient-right p-4 p-md-5 rounded-4 shadow mb-4 text-white">
+          <h4 class="fw-bold mb-4">Información de Contacto</h4>
+          
+          <div class="d-flex align-items-start mb-4 contact-item">
+            <div class="icon-square bg-primary me-3 flex-shrink-0">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <strong>Email</strong><br>
+              <a href="mailto:slcommercialwraps@gmail.com" class="text-white text-decoration-underline">
+                slcommercialwraps@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-4 contact-item">
+            <div class="icon-square bg-orange me-3 flex-shrink-0">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+              <strong>Teléfono</strong><br>
+              Disponible por WhatsApp
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start contact-item">
+            <div class="icon-square bg-primary me-3 flex-shrink-0">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <strong>Ubicación</strong><br>
+              Lakewood, NJ, United States
+            </div>
+          </div>
+        </div>
+
+        <!-- Horario de Atención -->
+        <div class="bg-white p-4 p-md-5 rounded-4 shadow">
+          <h4 class="fw-bold mb-4">Horario de Atención</h4>
+          <ul class="list-unstyled mb-0 lh-lg fs-5">
+            <li><strong>Lunes - Viernes:</strong> 8:00 AM - 6:00 PM</li>
+            <li><strong>Sábado:</strong> 9:00 AM - 4:00 PM</li>
+            <li><strong>Domingo:</strong> Cerrado</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
