@@ -1,0 +1,104 @@
+
+        :root {
+            --azul: #3C83F7;
+            --naranja: #FF6B00;
+        }
+        .azul { color: var(--azul); }
+        .naranja { color: var(--naranja); }
+
+        .sobre-nosotros {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sobre-nosotros h2 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: -1.5px;
+        }
+
+        .sobre-nosotros .lead {
+            font-size: 1.35rem;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .card {
+            transition: all 0.4s ease;
+            border-radius: 20px;
+            border: none;
+            background: white;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(60, 131, 247, 0.2) !important;
+        }
+
+        .card i {
+            transition: all 0.4s ease;
+        }
+
+        .card:hover i {
+            transform: scale(1.2) rotate(6deg);
+        }
+
+        .resumen-final {
+            max-width: 960px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #333;
+            padding: 60px;
+        }
+
+        .resumen-final strong {
+            font-size: 1.55rem;
+        }
+
+        /* === RESPONSIVE PERFECCIONADO === */
+        @media (max-width: 992px) {
+            .sobre-nosotros h2 { font-size: 2.8rem; }
+            .sobre-nosotros .lead { font-size: 1.25rem; }
+        }
+
+        @media (max-width: 768px) {
+            .sobre-nosotros {
+                padding: 80px 15px;
+            }
+            .sobre-nosotros h2 {
+                font-size: 2.4rem !important;
+                line-height: 1.2;
+            }
+            .sobre-nosotros .lead {
+                font-size: 1.15rem;
+            }
+            .card {
+                margin-bottom: 30px;
+            }
+            .card i {
+                font-size: 3.8rem !important;
+            }
+            .resumen-final {
+                font-size: 1.15rem;
+                padding: 0 10px;
+            }
+            .resumen-final strong {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sobre-nosotros h2 {
+                font-size: 2.1rem !important;
+            }
+            .card i {
+                font-size: 3.4rem !important;
+            }
+            .resumen-final {
+                font-size: 1.1rem;
+                line-height: 1.9;
+            }
+        }

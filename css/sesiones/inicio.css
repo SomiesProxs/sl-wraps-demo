@@ -131,7 +131,7 @@
 }
 
 .whatsapp-btn:active {
-  transform: scale(0.96);
+  transform: translateY(-240%) scale(0.96);
 }
 
 .whatsapp-btn i {
@@ -167,6 +167,9 @@
   .whatsapp-btn i {
     font-size: 16px;
   }
+  .whatsapp-btn:active {
+  transform: translateY(-140%) scale(0.96);
+}
 }
 
 
@@ -210,4 +213,7 @@
   .whatsapp-btn i {
     font-size: 10px;
   }
+    .whatsapp-btn:active {
+  transform: translateY(0%) scale(0.96);
+}
 }
