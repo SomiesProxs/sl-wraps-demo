@@ -199,24 +199,44 @@ Envie las fotos de referencia para tener una idea más clara.
 <!-- Botón de idioma PREMIUM con BANDERAS REALES -->
 <div class="lang-fab-container">
   <button class="lang-fab" aria-label="Cambiar idioma">
-    <img src="https://flagcdn.com/w40/es.png" alt="Español" class="fab-flag">
+    <img src="https://flagcdn.com/w40/gb.png" alt="English" class="fab-flag">
   </button>
 
   <div class="lang-menu">
-    <button class="lang-item" data-lang="es">
-      <img src="https://flagcdn.com/w40/es.png" alt="Español">
-      <span>Español</span>
-    </button>
+
     <button class="lang-item" data-lang="en">
       <img src="https://flagcdn.com/w40/gb.png" alt="English">
       <span>English</span>
     </button>
+
+    <button class="lang-item" data-lang="es">
+      <img src="https://flagcdn.com/w40/es.png" alt="Español">
+      <span>Español</span>
+    </button>
+
   </div>
-</div><script>
+</div>
+
+<script>
+  function loadLanguage(lang) {
+    fetch(`./lang/${lang}.json`)
+      .then(response => response.json())
+      .then(texts => {
+        document.querySelectorAll("[data-key]").forEach(el => {
+          const key = el.getAttribute("data-key");
+          if (texts[key]) el.textContent = texts[key];
+        });
+      });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const fab = document.querySelector('.lang-fab');
     const fabFlag = document.querySelector('.fab-flag');
     const menu = document.querySelector('.lang-menu');
+
+    // Cargar idioma guardado
+    const savedLang = localStorage.getItem("lang") || "en";
+    loadLanguage(savedLang);
 
     // Abrir/cerrar menú
     fab.addEventListener('click', (e) => {
@@ -224,7 +244,6 @@ Envie las fotos de referencia para tener una idea más clara.
       menu.classList.toggle('show');
     });
 
-    // Cerrar al hacer clic fuera
     document.addEventListener('click', () => {
       menu.classList.remove('show');
     });
@@ -233,21 +252,21 @@ Envie las fotos de referencia para tener una idea más clara.
       e.stopPropagation();
     });
 
-    // Cambiar idioma y bandera
+    // Selección de idioma
     document.querySelectorAll('.lang-item').forEach(item => {
       item.addEventListener('click', () => {
+        const lang = item.getAttribute("data-lang");
         const newFlag = item.querySelector('img').src;
-        const langText = item.querySelector('span').textContent;
 
-        // Cambiar la bandera del botón principal
         fabFlag.src = newFlag;
 
-        // Cerrar menú
-        menu.classList.remove('show');
+        // Guardar
+        localStorage.setItem("lang", lang);
 
-        // Aquí puedes cambiar el idioma real
-        console.log('Idioma seleccionado:', item.dataset.lang);
-        alert(`Idioma: ${langText}`);
+        // Cargar textos
+        loadLanguage(lang);
+
+        menu.classList.remove('show');
       });
     });
   });
