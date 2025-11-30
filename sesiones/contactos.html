@@ -21,40 +21,41 @@
     <div class="row g-5 align-items-start">
 
       <!-- ===== LADO IZQUIERDO: Formulario ===== -->
-      <div class="col-lg-7">
-        <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg" style="border-radius:20px;">
-          <form action="https://formspree.io/f/YOUR_CODE" method="POST">
+<div class="col-lg-7">
+  <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg" style="border-radius:20px;">
+    
+    <!-- AÑADÍ: novalidate + quité el action vacío -->
+    <form id="formularioCotizacion" novalidate>
 
-            <div class="mb-4">
-              <label class="form-label fw-bold">Nombre Completo <span class="text-danger">*</span></label>
-              <input type="text" class="form-control form-control-lg rounded-pill" placeholder="Juan Pérez" name="nombre" required>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-bold">Email <span class="text-danger">*</span></label>
-              <input type="email" class="form-control form-control-lg rounded-pill" placeholder="juan@ejemplo.com" name="email" required>
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-bold">Teléfono</label>
-              <input type="tel" class="form-control form-control-lg rounded-pill" placeholder="+1 (555) 123-4567" name="telefono">
-            </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-bold">Descripción del Proyecto</label>
-              <textarea class="form-control rounded-3" rows="6" placeholder="Cuéntanos sobre tu vehículo y qué tipo de wrap necesitas..." name="mensaje"></textarea>
-            </div>
-
-            <div class="text-center mt-4">
-              <button type="submit" class="btn btn-lg px-5 py-3 rounded-pill shadow btn-gradient text-white">
-                Enviar Cotización
-              </button>
-            </div>
-          </form>
-
-          
-        </div>
+      <div class="mb-4">
+        <label class="form-label fw-bold">Nombre Completo <span class="text-danger">*</span></label>
+        <input type="text" id="nombre" class="form-control form-control-lg rounded-pill" placeholder="Juan Pérez" required>
       </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-bold">Email <span class="text-danger">*</span></label>
+        <input type="email" id="email" class="form-control form-control-lg rounded-pill" placeholder="juan@ejemplo.com" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-bold">Teléfono</label>
+        <input type="tel" id="telefono" class="form-control form-control-lg rounded-pill" placeholder="+1 (555) 123-4567">
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-bold">Descripción del Proyecto</label>
+        <textarea id="mensaje" class="form-control rounded-3" rows="6" placeholder="Cuéntanos sobre tu vehículo y qué tipo de wrap necesitas..." required></textarea>
+      </div>
+
+      <div class="text-center mt-4">
+        <!-- Cambié type="button" para que no intente enviar el form solo -->
+        <button type="button" onclick="enviarPorMailto()" class="btn btn-lg px-5 py-3 rounded-pill shadow btn-gradient text-white">
+          Enviar Cotización
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
       <!-- ===== LADO DERECHO: Información ===== -->
       <div class="col-lg-5">
@@ -107,15 +108,16 @@
         </div>
       </div>
 
-    </div><!-- Aviso de fotos (lo dejamos como estaba, centrado y bonito) -->
-          <div class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4">
-            <div class="text-center">
-              <i class="fas fa-camera fa-2x text-warning mb-3"></i>
-              <p class="mb-0 fw-bold text-dark fs-5">
-                No olvides adjuntar tus fotos directamente en el correo para que podamos ver tu vehículo y ofrecerte una mejor propuesta.
-              </p>
-            </div>
-          </div>
+    </div>
+
+    <!-- Aviso de fotos -->
+    <div class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4">
+      <div class="text-center">
+        <i class="fas fa-camera fa-2x text-warning mb-3"></i>
+        <p class="mb-0 fw-bold text-dark fs-5">
+          No olvides adjuntar tus fotos directamente en el correo para que podamos ver tu vehículo y ofrecerte una mejor propuesta.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
-

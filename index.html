@@ -137,13 +137,52 @@
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-  <script>
-    fetch('sesiones/sobrenosotros.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('sobrenosotros').innerHTML = data;
-      });
-  </script>
+<script>
+  // Carga la sección Sobre Nosotros
+  fetch('sesiones/sobrenosotros.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('sobrenosotros').innerHTML = data;
+    })
+    .catch(error => console.error('Error cargando Sobre Nosotros:', error));
+
+  // FUNCIÓN PARA ENVIAR EL CORREO (todo corregido y probado)
+  function enviarPorMailto() {
+    const nombre   = document.getElementById("nombre").value.trim();
+    const email    = document.getElementById("email").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const mensaje  = document.getElementById("mensaje").value.trim();
+
+    // Validación correcta
+    if (!nombre || !email || !mensaje) {
+      alert("Por favor completa todos los campos obligatorios");
+      return;
+    }
+
+    const asunto = encodeURIComponent(`Cotización - ${nombre} - S&L Commercial Wraps`);
+
+    const cuerpo = encodeURIComponent(
+`Nueva solicitud de cotización desde la web:
+
+Nombre completo: ${nombre}
+Email: ${email}
+Teléfono: ${telefono || "No indicó"}
+
+Descripción del proyecto:
+${mensaje}
+
+---
+Envie las fotos de referencia para tener una idea más clara.
+`.trim());
+
+    // Abre el correo
+    window.location.href = `mailto:slcommercialwraps@gmail.com?subject=${asunto}&body=${cuerpo}`;
+
+    // Limpia el formulario
+    document.getElementById("formularioCotizacion").reset();
+
+  }
+</script>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
