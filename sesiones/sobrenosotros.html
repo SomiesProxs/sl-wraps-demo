@@ -13,8 +13,8 @@
     <div class="container">
         <!-- Título -->
         <div class="text-center mb-5">
-            <h2>About <span class="azul">Us</span></h2>
-            <p class="lead">Transforming vehicles for years</p>
+            <h2 ><span data-key="servicio_TITULO_PAART1">About </span><span  data-key="servicio_TITULO_PAART2" class="azul">Us</span></h2>
+            <p data-key="servicio_Transforming" class="lead">Transforming vehicles for years</p>
         </div>
 
         <!-- 3 Tarjetas - se apilan perfectamente en móvil -->
@@ -25,8 +25,8 @@
                     <div class="mb-4">
                         <i class="bi bi-eye-fill azul" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="fw-bold mb-3 azul fs-3">Vision</h4>
-                    <p class="text-muted px-2 px-lg-4">
+                    <h4 data-key="servicio_Vision" class="fw-bold mb-3 azul fs-3">Vision</h4>
+                    <p data-key="servicio_leading" class="text-muted px-2 px-lg-4">
                         To be the leading and benchmark company in commercial vehicle lettering in the market, recognized for innovation in design, technical excellence and commitment to the success of each client's brand image.
                     </p>
                 </div>
@@ -38,8 +38,8 @@
                     <div class="mb-4">
                         <i class="bi bi-bullseye naranja" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="fw-bold mb-3 naranja fs-3">Mission</h4>
-                    <p class="text-muted px-2 px-lg-4">
+                    <h4 data-key="servicio_Mission" class="fw-bold mb-3 naranja fs-3">Mission</h4>
+                    <p data-key="servicio_transform" class="text-muted px-2 px-lg-4">
                         We transform our customers' fleets into powerful, high-impact, and long-lasting visual marketing tools through superior quality signage and exceptional service.                    </p>
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     <div class="mb-4">
                         <i class="bi bi-shield-fill-check azul" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="fw-bold mb-3 azul fs-3">Quality and Durability</h4>
-                    <p class="text-muted px-2 px-lg-4">
+                    <h4 data-key="servicio_Durability" class="fw-bold mb-3 azul fs-3">Quality and Durability</h4>
+                    <p data-key="servicio_committed" class="text-muted px-2 px-lg-4">
                         We are committed to using only the highest quality materials and the most advanced techniques to ensure that every poster not only looks impeccable, but also stands the test of time and weather conditions.
                     </p>
                 </div>
@@ -61,9 +61,17 @@
         <!-- Resumen final -->
         <div class="text-center mt-5">
             <p class="resumen-final">
-                <strong class="azul">At S&L COMMERCIAL WRAPS</strong>, we specialize in transforming your vehicle into a mobile advertising tool that stands out on the streets of Lakewood and all of New Jersey.<br class="d-none d-md-block">
-                With years of experience, cutting-edge technology, and premium materials, we guarantee results that <span class="naranja">exceed expectations</span>. Every project is unique and designed to maximize your brand's visual impact.
-            </p>
+  <strong data-key="servicio_SUB1" class="azul">At S&L COMMERCIAL WRAPS</strong>
+  <span data-key="servicio_SUB2">, we specialize in transforming your vehicle into a mobile advertising tool that stands out on the streets of Lakewood and all of New Jersey.</span>
+
+  <!-- Aquí estaba el error: el data-key estaba en el <br> -->
+  <br class="d-none d-md-block">
+  <span data-key="servicio_SUB3">
+    With years of experience, cutting-edge technology, and premium materials, we guarantee results that 
+  </span>
+  <strong data-key="servicio_SUB5" class="naranja">exceed expectations</strong>
+  <span data-key="servicio_SUB6">. Cada proyecto es único y está diseñado para maximizar el impacto visual de su marca.</span>
+</p>
         </div>
     </div>
 </section>

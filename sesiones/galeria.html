@@ -13,21 +13,24 @@
 
 <div class="container py-5 py-lg-7">
   <div class="text-center mb-5">
-    <h1 class="display-4 fw-bold">Our <span class="azul">Works</span></h1>
-    <p class="lead text-muted">Explore our gallery of completed projects.</p>
+<span data-key="galeria_titulo_part1" class="display-4 fw-bold">Our </span>
+  <span data-key="galeria_titulo_part2" class="display-4 fw-bold azul">Works</span>
+    <p data-key="galeria_subtitulo" class="lead text-muted">Explore our gallery of completed projects.</p>
   </div>
 
   <!-- Botones Fotos / Vídeos -->
-  <div class="text-center mb-5 mb-lg-6">
-    <div class="d-inline-flex gap-3 gap-md-5 flex-wrap justify-content-center" role="group">
-      <button type="button" class="btn btn-toggle active" id="btnFotos">
-        <i class="fas fa-camera me-2"></i> Photos
-      </button>
-      <button type="button" class="btn btn-toggle" id="btnVideos">
-        <i class="fas fa-video me-2"></i> Videos
-      </button>
-    </div>
+<div class="text-center mb-5 mb-lg-6">
+  <div class="d-inline-flex gap-3 gap-md-5 flex-wrap justify-content-center" role="group">
+    <button type="button" class="btn btn-toggle active" id="btnFotos">
+      <i class="fas fa-camera me-2"></i>
+      <span data-key="galeria_photos">Photos</span>
+    </button>
+    <button type="button" class="btn btn-toggle" id="btnVideos">
+      <i class="fas fa-video me-2"></i>
+      <span data-key="galeria_videos">Videos</span>
+    </button>
   </div>
+</div>
 
   <!-- GALERÍA -->
   <div class="row g-4 g-md-5 gx-lg-5 gy-lg-6" id="gallery">
@@ -36,55 +39,55 @@
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto1.jpg" alt="Proyecto 1" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto2.jpg" alt="Proyecto 2" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto3.jpg" alt="Proyecto 3" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto4.jpg" alt="Proyecto 4" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto5.jpg" alt="Proyecto 5" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto6.jpg" alt="Proyecto 6" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto7.jpg" alt="Proyecto 7" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto8.jpg" alt="Proyecto 8" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item foto">
       <div class="inner">
         <img src="img/sessiones/galeria/foto9.jpg" alt="Proyecto 9" loading="lazy">
-        <div class="overlay">Click to enlarge</div>
+        <div data-key="galeria_click" class="overlay">Click to enlarge</div>
       </div>
     </div>
     <!-- ... el resto de fotos igual ... -->
@@ -93,37 +96,37 @@
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item video d-none">
       <div class="inner">
         <video src="img/sessiones/galeria/video1.mp4" muted loop playsinline preload="metadata"></video>
-        <div class="overlay">Click to play fullscreen</div>
+        <div data-key="galeria_fullscreen" class="overlay">Click to play fullscreen</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item video d-none">
       <div class="inner">
         <video src="img/sessiones/galeria/video2.mp4" muted loop playsinline preload="metadata"></video>
-        <div class="overlay">Click to play fullscreen</div>
+        <div data-key="galeria_fullscreen" class="overlay">Click to play fullscreen</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item video d-none">
       <div class="inner">
         <video src="img/sessiones/galeria/video3.mp4" muted loop playsinline preload="metadata"></video>
-        <div class="overlay">Click to play fullscreen</div>
+        <div data-key="galeria_fullscreen" class="overlay">Click to play fullscreen</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item video d-none">
       <div class="inner">
         <video src="img/sessiones/galeria/video4.mp4" muted loop playsinline preload="metadata"></video>
-        <div class="overlay">Click to play fullscreen</div>
+        <div data-key="galeria_fullscreen" class="overlay">Click to play fullscreen</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item video d-none">
       <div class="inner">
         <video src="img/sessiones/galeria/video5.mp4" muted loop playsinline preload="metadata"></video>
-        <div class="overlay">Click to play fullscreen</div>
+        <div data-key="galeria_fullscreen" class="overlay">Click to play fullscreen</div>
       </div>
     </div>
     <div class="col-12 col-sm-6 col-lg-4 mb-4 gallery-item video d-none">
       <div class="inner">
         <video src="img/sessiones/galeria/video6.mp4" muted loop playsinline preload="metadata"></video>
-        <div class="overlay">Click to play fullscreen</div>
+        <div data-key="galeria_fullscreen" class="overlay">Click to play fullscreen</div>
       </div>
     </div>
     <!-- Repite los otros 7 vídeos igual, solo cambia el número -->
