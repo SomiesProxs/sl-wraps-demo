@@ -1,75 +1,110 @@
 .azul { color: #0A68FF; }
 
-  /* RESPONSIVE PERFECTO: separación bonita en todos los tamaños */
-  #gallery {
-    --gap: 1.2rem;
-  }
-  @media (min-width: 576px)  { #gallery { --gap: 1.0rem; } }
-  @media (min-width: 768px)  { #gallery { --gap: 1.0rem; } }
-  @media (min-width: 1200px) { #gallery { --gap: 1.0rem; } }
+/* Separación perfecta en todos los dispositivos */
+#gallery { --gap: 1.2rem; }
+@media (min-width: 576px)  { #gallery { --gap: 1.0rem; } }
+@media (min-width: 768px)  { #gallery { --gap: 1.0rem; } }
+@media (min-width: 1200px) { #gallery { --gap: 1.0rem; } }
 
-  .row {
-    margin-left: calc(var(--gap) / -2);
-    margin-right: calc(var(--gap) / -2);
-  }
-  #gallery > [class*="col-"] {
-    padding-left: calc(var(--gap) / 2);
-    padding-right: calc(var(--gap) / 2);
-    padding-bottom: var(--gap);
-  }
+.row {
+  margin-left: calc(var(--gap) / -2);
+  margin-right: calc(var(--gap) / -2);
+}
+#gallery > [class*="col-"] {
+  padding-left: calc(var(--gap) / 2);
+  padding-right: calc(var(--gap) / 2);
+  padding-bottom: var(--gap);
+}
 
-  /* El resto del estilo exactamente igual que te gusta */
-  .gallery-item .inner {
-    position: relative;
-    overflow: hidden;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    aspect-ratio: 16 / 9;
-    cursor: pointer;
-    transition: all 0.4s ease;
-  }
-  .gallery-item:hover .inner {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-  }
-  .gallery-item img {
-    width: 100%; height: 100%; object-fit: cover;
-    transform: scale(1.18);
-    transition: transform 0.6s ease;
-  }
-  .gallery-item:hover img { transform: scale(1.35); }
+/* Contenedor general */
+.gallery-item .inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
 
-  .ratio iframe {
-    border: 0;
-    transform: scale(1.18);
-    transition: transform 0.6s ease;
-  }
-  .gallery-item:hover .ratio iframe { transform: scale(1.3); }
+/* === FOTOS: mantienen el zoom bonito === */
+.gallery-item.foto .inner {
+  aspect-ratio: 16 / 9;
+}
+.gallery-item.foto:hover .inner {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+.gallery-item.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.18);
+  transition: transform 0.6s ease;
+}
+.gallery-item.foto:hover img {
+  transform: scale(1.35);
+}
 
-  .overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 20px;
-    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
-    color: white; font-weight: 600; font-size: 1.05rem;
-    opacity: 0; transform: translateY(15px);
-    transition: all 0.4s ease; pointer-events: none;
-  }
-  .gallery-item:hover .overlay { opacity: 1; transform: translateY(0); }
+/* === VÍDEOS: verticales 9:16 + SIN NINGÚN ZOOM === */
+.gallery-item.video .inner {
+  aspect-ratio: 9 / 16 !important;   /* Vertical perfecto */
+}
+.gallery-item.video:hover .inner {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+.gallery-item.video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1) !important;    /* ¡Zoom eliminado por completo! */
+  transition: none !important;       /* Sin animación de zoom */
+}
 
-  /* Botones tal cual los tenías */
-  .btn-toggle {
-    min-width: 200px;
-    padding: 16px 40px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    border: 3px solid #ddd;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-  }
-  .btn-toggle:not(.active) { background: transparent; color: #555; }
-  .btn-toggle.active { background: white; color: #000; border-color: #000;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-  .btn-group .btn + .btn { margin-left: 60px !important; }
+/* Overlay bonito en ambos */
+.overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+.gallery-item:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .modal-content.bg-black { background: rgba(0,0,0,0.95); }
-  .btn-close-white { filter: invert(1); font-size: 2rem; opacity: 0.9; }
+/* Botones (sin cambios) */
+.btn-toggle {
+  min-width: 200px;
+  padding: 16px 40px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: 3px solid #ddd;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+.btn-toggle:not(.active) { background: transparent; color: #555; }
+.btn-toggle.active {
+  background: white;
+  color: #000;
+  border-color: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Modal */
+.modal-content.bg-black { background: rgba(0,0,0,0.95); }
+.btn-close-white { filter: invert(1); font-size: 2rem; opacity: 0.9; }
+
+/* En el modal grande también quitamos cualquier zoom residual */
+#modalContent video,
+#modalContent img {
+  max-height: 70vh;
+  object-fit: contain !important;
+}

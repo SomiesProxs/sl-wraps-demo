@@ -12,9 +12,9 @@
 
     <!-- Título y subtítulo centrados -->
     <div class="text-center mb-5">
-        <span  class="display-5 fw-bold text-dark" data-key="contacto_title_part1">Let’s talk about your </span>
-        <span class="display-5 fw-bold naranja" data-key="contacto_title_part2"> Project!</span>
-      <p class="lead text-muted">
+        <span  class="display-5 fw-bold text-dark" data-key="contacto_title_part1">Let’s talk about your  </span>
+        <span class="display-5 fw-bold naranja" data-key="contacto_title_part2">Project!</span>
+      <p data-key="contacto_subtitle" class="lead text-muted">
         Fill out the form and receive a personalized quote in less than 24 hours
       </p>
     </div>
@@ -29,28 +29,28 @@
     <form id="formularioCotizacion" novalidate>
 
       <div class="mb-4">
-        <label class="form-label fw-bold">Full Name <span class="text-danger">*</span></label>
+        <label data-key="contacto_fullname" class="form-label fw-bold">Full Name <span class="text-danger">*</span></label>
         <input type="text" id="nombre" class="form-control form-control-lg rounded-pill" placeholder="Juan Pérez" required>
       </div>
 
       <div class="mb-4">
-        <label class="form-label fw-bold">Email <span class="text-danger">*</span></label>
+        <label data-key="contacto_email" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
         <input type="email" id="email" class="form-control form-control-lg rounded-pill" placeholder="juan@ejemplo.com" required>
       </div>
 
       <div class="mb-4">
-        <label class="form-label fw-bold">Phone</label>
+        <label data-key="contacto_phone" class="form-label fw-bold">Phone</label>
         <input type="tel" id="telefono" class="form-control form-control-lg rounded-pill" placeholder="Your number">
       </div>
 
       <div class="mb-4">
-        <label class="form-label fw-bold">Project Description</label>
-        <textarea id="mensaje" class="form-control rounded-3" rows="6" placeholder="Tell us about your vehicle and what type of wrap you need..." required></textarea>
+        <label data-key="contacto_projectdescription" class="form-label fw-bold">Project Description</label>
+        <textarea data-key="contacto_projectdescription2" id="mensaje" class="form-control rounded-3" rows="6" placeholder="Tell us about your vehicle and what type of wrap you need..." required></textarea>
       </div>
 
       <div class="text-center mt-4">
         <!-- Cambié type="button" para que no intente enviar el form solo -->
-        <button type="button" onclick="enviarPorMailto()" class="btn btn-lg px-5 py-3 rounded-pill shadow btn-gradient text-white">
+        <button data-key="contacto_sendquote" type="button" onclick="enviarPorMailto()" class="btn btn-lg px-5 py-3 rounded-pill shadow btn-gradient text-white">
           Send Quote
         </button>
       </div>
@@ -63,14 +63,14 @@
 
         <!-- Información de Contacto -->
         <div class="bg-gradient-right p-4 p-md-5 rounded-4 shadow mb-4 text-white">
-          <h4 class="fw-bold mb-4">Contact Information</h4>
+          <h4 data-key="contacto_contact" class="fw-bold mb-4">Contact Information</h4>
           
           <div class="d-flex align-items-start mb-4 contact-item">
             <div class="icon-square bg-primary me-3 flex-shrink-0">
               <i class="fas fa-envelope"></i>
             </div>
             <div>
-              <strong>Email</strong><br>
+              <strong data-key="contacto_email">Email</strong><br>
               <a href="mailto:slcommercialwraps@gmail.com" class="text-white text-decoration-underline">
                 slcommercialwraps@gmail.com
               </a>
@@ -82,8 +82,8 @@
               <i class="fab fa-whatsapp"></i>
             </div>
             <div>
-              <strong>Phone</strong><br>
-              Available by WhatsApp
+              <strong data-key="contacto_phone">Phone</strong><br>
+              <a data-key="contacto_subphone">Available by WhatsApp</a>
             </div>
           </div>
 
@@ -92,7 +92,7 @@
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <div>
-              <strong>Location</strong><br>
+              <strong data-key="contacto_location"></strong>Location</strong><br>
               Lakewood, NJ, United States
             </div>
           </div>
@@ -100,11 +100,11 @@
 
         <!-- Horario de Atención -->
         <div class="bg-white p-4 p-md-5 rounded-4 shadow">
-          <h4 class="fw-bold mb-4">Customer service hours</h4>
+          <h4 data-key="contacto_customer" class="fw-bold mb-4">Customer service hours</h4>
           <ul class="list-unstyled mb-0 lh-lg fs-5">
-            <li><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
-            <li><strong>Saturday:</strong> 9:00 AM - 4:00 PM</li>
-            <li><strong>Sunday:</strong> Closed</li>
+            <li><strong data-key="contacto_mondey">Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
+            <li><strong data-key="contacto_saturday">Saturday:</strong> 9:00 AM - 4:00 PM</li>
+            <li><strong data-key="contacto_sunday">Sunday:</strong> <a data-key="contacto_closed">Closed</a></li>
           </ul>
         </div>
       </div>
@@ -115,7 +115,7 @@
     <div class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4">
       <div class="text-center">
         <i class="fas fa-camera fa-2x text-warning mb-3"></i>
-        <p class="mb-0 fw-bold text-dark fs-5">
+        <p data-key="contacto_descripcion" class="mb-0 fw-bold text-dark fs-5">
           Don't forget to attach your photos directly to the email so we can see your vehicle and offer you a better proposal.
         </p>
       </div>

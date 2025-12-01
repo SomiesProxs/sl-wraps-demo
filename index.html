@@ -80,48 +80,86 @@
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-  <script>
-    fetch('sesiones/galeria.html')
-    .then(response => response.text())
+<script>
+  fetch('sesiones/galeria.html')
+    .then(response => {
+      if (!response.ok) throw new Error('No se pudo cargar la galería');
+      return response.text();
+    })
     .then(data => {
       document.getElementById('galeria').innerHTML = data;
 
-      // === AQUÍ VA TODO EL JAVASCRIPT QUE ANTES ESTABA DENTRO DE galeria.html ===
-      // 1. Botones Fotos / Vídeos
-      const btnFotos = document.getElementById('btnFotos');
+      // ============================
+      // 1. BOTONES FOTOS / VÍDEOS
+      // ============================
+      const btnFotos  = document.getElementById('btnFotos');
       const btnVideos = document.getElementById('btnVideos');
 
       if (btnFotos && btnVideos) {
         btnFotos.addEventListener('click', () => {
+          document.querySelectorAll('.gallery-item').forEach(el => el.classList.add('d-none'));
           document.querySelectorAll('.gallery-item.foto').forEach(el => el.classList.remove('d-none'));
-          document.querySelectorAll('.gallery-item.video').forEach(el => el.classList.add('d-none'));
           btnFotos.classList.add('active');
           btnVideos.classList.remove('active');
         });
 
         btnVideos.addEventListener('click', () => {
+          document.querySelectorAll('.gallery-item').forEach(el => el.classList.add('d-none'));
           document.querySelectorAll('.gallery-item.video').forEach(el => el.classList.remove('d-none'));
-          document.querySelectorAll('.gallery-item.foto').forEach(el => el.classList.add('d-none'));
           btnVideos.classList.add('active');
           btnFotos.classList.remove('active');
         });
       }
 
-      // 2. Abrir imágenes en modal grande (con alt accesible)
-      document.querySelectorAll('.gallery-item.foto img').forEach(img => {
-        img.addEventListener('click', function () {
-          const enlarged = document.getElementById('enlargedImage');
-          enlarged.src = this.src;
-          enlarged.alt = this.alt || 'Proyecto realizado - vista ampliada';
-          const modal = new bootstrap.Modal(document.getElementById('enlargeModal'));
-          modal.show();
+      // ============================
+      // 2. MODAL ÚNICO PARA FOTOS Y VÍDEOS
+      // ============================
+      const modalElement    = document.getElementById('enlargeModal');
+      const modalContent    = document.getElementById('modalContent');
+      const bootstrapModal  = new bootstrap.Modal(modalElement);
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => {
+          modalContent.innerHTML = ''; // limpiar contenido anterior
+
+          if (item.classList.contains('foto')) {
+            // ---- FOTO ----
+            const img = document.createElement('img');
+            img.src = item.querySelector('img').src;
+            img.alt = item.querySelector('img').alt || 'Proyecto realizado';
+            img.className = 'w-100 h-100 object-fit-contain';
+            modalContent.appendChild(img);
+
+          } else if (item.classList.contains('video')) {
+            // ---- VÍDEO VERTICAL ----
+            const video = document.createElement('video');
+            video.src = item.querySelector('video').src;
+            video.controls = true;
+            video.autoplay = true;        // se reproduce al abrir el modal
+            video.muted = false;
+            video.playsInline = true;
+            video.className = 'w-100 h-100 object-fit-contain';
+            video.style.maxHeight = '90vh';
+            modalContent.appendChild(video);
+          }
+
+          bootstrapModal.show();
         });
       });
 
-      // === FIN DEL SCRIPT QUE ANTES ESTABA DENTRO ===
+      // Opcional: cerrar modal al hacer clic fuera (Bootstrap ya lo hace, pero por si acaso)
+      modalElement.addEventListener('hidden.bs.modal', () => {
+        modalContent.innerHTML = '';
+      });
+
     })
-    .catch(err => console.error('Error cargando la galería:', err));
-  </script>
+    .catch(err => {
+      console.error('Error cargando la galería:', err);
+      document.getElementById('galeria').innerHTML = 
+        '<p class="text-center text-danger">No se pudo cargar la galería. Revisa la ruta o la conexión.</p>';
+    });
+</script>
   
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -234,9 +272,23 @@ Envie las fotos de referencia para tener una idea más clara.
     const fabFlag = document.querySelector('.fab-flag');
     const menu = document.querySelector('.lang-menu');
 
-    // Cargar idioma guardado
+    // ----------------------------------------------
+    // ▶ Cargar idioma guardado
+    // ----------------------------------------------
     const savedLang = localStorage.getItem("lang") || "en";
     loadLanguage(savedLang);
+
+    // ----------------------------------------------
+    // ▶ ❗ ACTUALIZAR LA BANDERA SEGÚN EL IDIOMA
+    // ----------------------------------------------
+    if (savedLang === "es") {
+      fabFlag.src = "https://flagcdn.com/w40/es.png";
+      fabFlag.alt = "Español";
+    } else {
+      fabFlag.src = "https://flagcdn.com/w40/gb.png";
+      fabFlag.alt = "English";
+    }
+    // ----------------------------------------------
 
     // Abrir/cerrar menú
     fab.addEventListener('click', (e) => {
@@ -252,7 +304,7 @@ Envie las fotos de referencia para tener una idea más clara.
       e.stopPropagation();
     });
 
-    // Selección de idioma
+    // Cambiar idioma manualmente
     document.querySelectorAll('.lang-item').forEach(item => {
       item.addEventListener('click', () => {
         const lang = item.getAttribute("data-lang");
@@ -260,7 +312,7 @@ Envie las fotos de referencia para tener una idea más clara.
 
         fabFlag.src = newFlag;
 
-        // Guardar
+        // Guardar selección
         localStorage.setItem("lang", lang);
 
         // Cargar textos
@@ -271,6 +323,7 @@ Envie las fotos de referencia para tener una idea más clara.
     });
   });
 </script>
+
 
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
