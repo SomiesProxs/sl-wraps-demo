@@ -38,6 +38,7 @@
 "inicio_titulo_part3": "advertising tool ",
 "inicio_subtitulo": "Experts in commercial wraps, window tinting, and automotive design",
 "inicio_wasap": "Contact us on WhatsApp",
+"whatsappButtonLink": "https://wa.me/19733326605?text=Hello%20I%20want%20more%20information%20about%20your%20services",
 
 "servicio_titulo_part1": "Our",
 "servicio_titulo_part2": "Services",
@@ -81,6 +82,9 @@
 "footer_advertising": "advertising tools",
 "footer_Contact": "Contact",
 "footer_follow": "follow us",
-"footer_COMMERCIAL": "© 2025 S&L COMMERCIAL WRAPS. All rights reserved."
+"footer_COMMERCIAL": "© 2025 S&L COMMERCIAL WRAPS. All rights reserved.",
+
+"whatsappLink": "https://wa.me/19733326605?text=Hello%20I%20want%20more%20information%20about%20your%20services",
+"whatsappLabel": "Contact us on WhatsApp"
 
 }

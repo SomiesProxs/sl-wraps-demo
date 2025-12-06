@@ -4,41 +4,149 @@
     padding-bottom: 4rem;
   }
 
-  .titulo-seccion {
-    font-size: 50px;
-    color: #000;
-    font-family: "Rowdies", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .blue{
-    color: #0766FF;
-  }
+.titulo-seccion {
+  font-size: 70px;
+  color: #000;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  .naranja{
-    color: #DE7436;
-  }
-  .subtitulo-seccion {
-    max-width: 700px;
-    margin: 0 auto;
-  }
+.blue {
+  color: #0766FF;
+}
 
-  .custom-card {
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    
-  }
+.naranja {
+  color: #DE7436;
+}
 
-  .custom-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    border: solid #3F84F4 2px;
-    
+/* Estado inicial (sin animación aún) */
+.animated-title {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+}
+
+/* Animación activa al entrar en pantalla */
+.animated-title.show {
+  animation: showTitle 1.2s ease-out forwards;
+}
+
+.animated-title span {
+  display: inline-block;
+  animation: floatLetters 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+.animated-title.show span {
+  opacity: 1;
+}
+
+/* Delay */
+.animated-title span:nth-child(1) { animation-delay: 0.3s; }
+.animated-title span:nth-child(2) { animation-delay: 0.6s; }
+
+@keyframes showTitle {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatLetters {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* SUBTÍTULO - Estado inicial */
+.animated-subtitle {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.9s ease-out;
+}
+
+/* SUBTÍTULO - cuando entra a pantalla */
+.animated-subtitle.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.subtitulo-seccion {
+  max-width: 700px;
+  margin: 0 auto;
+}
+/* 🔥 Estado inicial */
+.animated-title-2 {
+  opacity: 0;
+  transform: translateY(30px);
+  letter-spacing: -2px;
+}
+
+/* 🔥 Cuando entra en pantalla */
+.animated-title-2.show {
+  animation: showTitle2 1s ease-out forwards;
+}
+
+/* 🔥 Keyframes */
+@keyframes showTitle2 {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    letter-spacing: -2px;
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 1px;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0px;
+  }
+}
+
+
+/* Estado inicial (oculta y lista para animar) */
+.custom-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+
+  
+}
+
+/* Cuando entren a la pantalla */
+.custom-card.show {
+  animation: cardAppear 0.9s ease-out forwards;
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hover (mantienes tu estilo) */
+.custom-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  border: solid #3F84F4 2px;
+}
+
 
   .card-img-wrapper {
     position: relative;
@@ -86,31 +194,30 @@
     margin-bottom: 1rem;
   }
 
-/* Botón base */
-.btn-primary {
-  background: white;
-  color: #3F84F4;
-  border: solid #3F84F4 2px;
-  border-radius: 30px;
-  padding: 0.6rem 1.5rem;
+.btn-link-custom {
+  color: #0766FF;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
   font-weight: 600;
-  width: 100%;
+  border: 1px solid #0766FF20;
+  display: inline-block;
   transition: all 0.4s ease;
+  
+  /* Para animar el degradado */
+  background-size: 200%;
 }
 
-/* Hover del botón (directo) */
-.btn-primary:hover {
-  background: linear-gradient(90deg, #3F84F4, #DE7436);
+/* Hover con efecto de movimiento del degradado */
+.btn-link-custom:hover {
+  background: linear-gradient(90deg, #3F84F4, #DE7436, #3F84F4);
+  background-size: 200%;
+  background-position: right center;
   color: white;
-  border: none;
 }
 
-/* Hover del botón al pasar por la tarjeta */
-.custom-card:hover .btn-primary {
-  background: linear-gradient(90deg, #3F84F4, #DE7436);
-  color: white;
-  border: none;
-}
+
 
 /* === MÓVIL: Tarjetas más cuadradas, pero SIN achicar texto === */
 @media (max-width: 1168px) {
@@ -235,10 +342,34 @@ MAS SOLUCIONES PUBLICITARIAS
   background: linear-gradient(135deg, #E6EFFE 0%, #ebd2c8 100%);
   border-radius: 18px;
   padding: 30px;
+  opacity: 0;
+  transform: translateY(40px) scale(0.9);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
+.serv-card.show {
+  animation: servAppear 0.8s ease-out forwards, floatCard 4s ease-in-out infinite;
+}
 
+/* ✨ Aparición suave + subida */
+@keyframes servAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 🌙 Movimiento flotante continuo */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* 🟠 TU HOVER ORIGINAL (NO SE TOCA) */
 .serv-card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 14px 28px rgba(0,0,0,0.15);
@@ -344,3 +475,8 @@ MAS SOLUCIONES PUBLICITARIAS
     font-size: 13px;
   }
 }
+
+
+
+/*ANIMACIONES*/
+

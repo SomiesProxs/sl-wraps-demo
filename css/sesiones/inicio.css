@@ -50,12 +50,6 @@
   pointer-events: none;           /* que no interfiera con clicks */
 }
 
-/* Si el overlay tapa textos dentro del item, sube el z-index de .carousel-caption */
-/* Si el overlay tapa textos dentro del item, sube el z-index de .carousel-caption */
-.carousel-caption {
-  position: relative;
-  z-index: 2;
-}
 
 
 .carousel-item img {
@@ -64,11 +58,6 @@
   width: 100%;
 }
 
-/* Asegura que el texto esté por encima del overlay */
-.carousel-caption {
-  position: absolute;
-  z-index: 2;
-}
 
 
 
@@ -216,4 +205,48 @@
     .whatsapp-btn:active {
   transform: translateY(0%) scale(0.96);
 }
+}
+
+/*ANIMACIONES*/
+/*TITULO*/
+.fade-up-smooth {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUpSmooth 1.2s ease-out forwards;
+}
+
+@keyframes fadeUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*TITULO*/
+.delay-1 { animation-delay: .3s; }
+.delay-2 { animation-delay: .6s; }
+.delay-3 { animation-delay: .9s; }
+.delay-4 { animation-delay: 1.2s; }
+.delay-5 { animation-delay: 1.5s; }
+
+/*BOTON*/
+.pop-in {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popInSmooth 1s ease-out forwards;
+}
+
+@keyframes popInSmooth {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

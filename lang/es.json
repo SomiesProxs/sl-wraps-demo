@@ -38,6 +38,7 @@
 "inicio_titulo_part3": "herramienta publicitaria",
 "inicio_subtitulo": "Expertos en rotulación comercial, tintado de ventanas y diseño automotriz.",
 "inicio_wasap": "Contacta con nosotros en WhatsApp",
+"whatsappButtonLink": "https://wa.me/19733326605?text=Hola%20quiero%20más%20información%20sobre%20sus%20servicios",
 
 "servicio_titulo_part1": "Nuestro",
 "servicio_titulo_part2": "Servicios",
@@ -81,5 +82,8 @@
 "footer_advertising": "herramientas publicitarias",
 "footer_Contact": "Contacto",
 "footer_follow": "Síganos",
-"footer_COMMERCIAL": "© 2025 S&L COMMERCIAL WRAPS. Reservados todos los derechos"
+"footer_COMMERCIAL": "© 2025 S&L COMMERCIAL WRAPS. Reservados todos los derechos",
+
+"whatsappLink": "https://wa.me/19733326605?text=Hola%20quiero%20más%20información%20sobre%20sus%20servicios",
+"whatsappLabel": "Contáctanos por WhatsApp"
 }
