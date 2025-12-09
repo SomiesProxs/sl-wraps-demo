@@ -1,5 +1,45 @@
 .azul { color: #0A68FF; }
 
+.galeria-title {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(25px) scale(0.95);
+}
+
+/* Cuando aparece */
+.galeria-title.show {
+  animation: galeriaAppear 1s ease-out forwards;
+}
+
+/* Movimiento suave continuo */
+.galeria-title.float {
+  animation: floatTitle 3s ease-in-out infinite;
+}
+
+.gallery-animated-title {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: all 1s ease-out;
+}
+
+.gallery-animated-title.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================
+   ÍTEMS (fotos y videos)
+============================ */
+.gallery-item {
+  opacity: 0;
+  transform: scale(0.85) translateY(20px);
+  transition: all 0.9s ease-out;
+}
+
+.gallery-item.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
 /* Separación perfecta */
 #gallery { --gap: 1.2rem; }
 @media (min-width: 576px)  { #gallery { --gap: 1.0rem; } }

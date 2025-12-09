@@ -149,6 +149,11 @@
       document.getElementById('galeria').innerHTML = data;
 
       // ============================
+      // 0. ACTIVAR ANIMACIONES
+      // ============================
+      setTimeout(() => activarAnimacionGaleria(), 200);
+
+      // ============================
       // 1. BOTONES FOTOS / VÍDEOS
       // ============================
       const btnFotos  = document.getElementById('btnFotos');
@@ -171,7 +176,7 @@
       }
 
       // ============================
-      // 2. MODAL ÚNICO PARA FOTOS Y VÍDEOS
+      // 2. MODAL ÚNICO PARA FOTOS/VÍDEOS
       // ============================
       const modalElement    = document.getElementById('enlargeModal');
       const modalContent    = document.getElementById('modalContent');
@@ -180,10 +185,9 @@
       document.querySelectorAll('.gallery-item').forEach(item => {
         item.style.cursor = 'pointer';
         item.addEventListener('click', () => {
-          modalContent.innerHTML = ''; // limpiar contenido anterior
+          modalContent.innerHTML = '';
 
           if (item.classList.contains('foto')) {
-            // ---- FOTO ----
             const img = document.createElement('img');
             img.src = item.querySelector('img').src;
             img.alt = item.querySelector('img').alt || 'Proyecto realizado';
@@ -191,11 +195,10 @@
             modalContent.appendChild(img);
 
           } else if (item.classList.contains('video')) {
-            // ---- VÍDEO VERTICAL ----
             const video = document.createElement('video');
             video.src = item.querySelector('video').src;
             video.controls = true;
-            video.autoplay = true;        // se reproduce al abrir el modal
+            video.autoplay = true;
             video.muted = false;
             video.playsInline = true;
             video.className = 'w-100 h-100 object-fit-contain';
@@ -207,7 +210,6 @@
         });
       });
 
-      // Opcional: cerrar modal al hacer clic fuera (Bootstrap ya lo hace, pero por si acaso)
       modalElement.addEventListener('hidden.bs.modal', () => {
         modalContent.innerHTML = '';
       });
@@ -218,8 +220,34 @@
       document.getElementById('galeria').innerHTML = 
         '<p class="text-center text-danger">No se pudo cargar la galería. Revisa la ruta o la conexión.</p>';
     });
+
+
+
+
+  /* =====================================================================================
+     ⭐ ANIMACIÓN PARA EL TÍTULO Y ITEMS DE LA GALERÍA
+     ===================================================================================== */
+  function activarAnimacionGaleria() {
+
+    const titulo = document.querySelector('#galeria .gallery-animated-title');
+    const items = document.querySelectorAll('#galeria .gallery-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+
+      });
+    }, { threshold: 0.2 });
+
+    if (titulo) observer.observe(titulo);
+    items.forEach(item => observer.observe(item));
+
+  }
 </script>
-  
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
