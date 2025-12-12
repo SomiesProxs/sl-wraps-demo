@@ -60,3 +60,33 @@
   }
 
   /*///////////////////////////////////////////ANIMACIONES////////////////////////////////////////////*/
+.contact-animated-title {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+.contact-animated-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#contactCamera {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+#contactCamera.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

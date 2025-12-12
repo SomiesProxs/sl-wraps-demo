@@ -11,23 +11,29 @@
   <div class="container py-5">
 
     <!-- Título y subtítulo centrados -->
-    <div class="text-center mb-5">
-        <span  class="display-5 fw-bold text-dark" data-key="contacto_title_part1">Let’s talk about your  </span>
-        <span class="display-5 fw-bold naranja" data-key="contacto_title_part2">Project!</span>
+    <div class="text-center mb-5 animated-contact-title">
+      <h2 id="contactTitle" class="contact-animated-title display-5 fw-bold">
+          <span class="text-dark" data-key="contacto_title_part1">Let’s talk about your </span>
+          <span class="naranja" data-key="contacto_title_part2">Project!</span>
+      </h2>
+
       <p data-key="contacto_subtitle" class="lead text-muted">
         Fill out the form and receive a personalized quote in less than 24 hours
       </p>
     </div>
 
+
     <div class="row g-5 align-items-start">
-<div class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4">
-      <div class="text-center">
-        <i class="fas fa-camera fa-2x text-warning mb-3"></i>
-        <p data-key="contacto_descripcion" class="mb-0 fw-bold text-dark fs-5">
-          Don't forget to attach your photos directly to the email so we can see your vehicle and offer you a better proposal.
-        </p>
-      </div>
-    </div>
+<div id="contactCamera" class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4">
+  <div class="text-center">
+    <i class="fas fa-camera fa-2x text-warning mb-3"></i>
+    <p data-key="contacto_descripcion" class="mb-0 fw-bold text-dark fs-5">
+      Don't forget to attach your photos directly to the email so we can see your vehicle and offer you a better proposal.
+    </p>
+  </div>
+</div>
+
+
       <!-- ===== LADO IZQUIERDO: Formulario ===== -->
 <div class="col-lg-7">
   <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg" style="border-radius:20px;">
@@ -42,12 +48,12 @@
 
       <div class="mb-4">
         <label data-key="contacto_email" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
-        <input data-key="contacto_ejemplo" type="email" id="email" class="form-control form-control-lg rounded-pill" placeholder="juan@ejemplo.com" required>
+        <input data-key="contacto_ejemplo" type="email" id="email" class="form-control form-control-lg rounded-pill" placeholder="juan@example.com" required>
       </div>
 
       <div class="mb-4">
         <label data-key="contacto_phone" class="form-label fw-bold">Phone</label>
-        <input type="tel" id="telefono" class="form-control form-control-lg rounded-pill" placeholder="Your number">
+        <input data-key="contacto_number" type="tel" id="telefono" class="form-control form-control-lg rounded-pill" placeholder="Your number">
       </div>
 
       <div class="mb-4">
@@ -90,7 +96,7 @@
             </div>
             <div>
               <strong data-key="contacto_phone">Phone</strong><br>
-              <a data-key="contacto_subphone">Available by WhatsApp</a>
+              <e data-key="contacto_subphone">Available by WhatsApp</e>
             </div>
           </div>
 
@@ -111,14 +117,12 @@
           <ul class="list-unstyled mb-0 lh-lg fs-5">
             <li><strong data-key="contacto_mondey">Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
             <li><strong data-key="contacto_saturday">Saturday:</strong> 9:00 AM - 4:00 PM</li>
-            <li><strong data-key="contacto_sunday">Sunday:</strong> <a data-key="contacto_closed">Closed</a></li>
+            <li><strong data-key="contacto_sunday">Sunday:</strong> <e data-key="contacto_closed">Closed</e></li>
           </ul>
         </div>
       </div>
 
     </div>
-
-    <!-- Aviso de fotos -->
     
   </div>
 </section>

@@ -41,13 +41,27 @@
 <div id="footer"></div>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
-  <script>
-    fetch('cabecera.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('cabecera').innerHTML = data;
+<script>
+fetch('cabecera.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('cabecera').innerHTML = html;
+
+    document.querySelectorAll('[data-scroll]').forEach(link => {
+      link.addEventListener('click', () => {
+        const id = link.getAttribute('data-scroll');
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
       });
-  </script>
+    });
+  });
+</script>
+
+
+
+
   
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -61,11 +75,13 @@
 
       // ⬇️ ⬇️ ⬇️  SOLO LO QUE PEDISTE  ⬇️ ⬇️ ⬇️
       document.querySelectorAll("[data-link]").forEach(el => {
-        const linkKey = el.getAttribute("data-link");
-        if (texts[linkKey]) {
-          el.setAttribute("onclick", `window.open('${texts[linkKey]}', '_blank')`);
-        }
-      });
+  const linkKey = el.getAttribute("data-link");
+
+  if (window.texts && window.texts[linkKey]) {
+    el.onclick = () => window.open(window.texts[linkKey], "_blank");
+  }
+});
+
       // ⬆️ ⬆️ ⬆️  SOLO LO QUE PEDISTE  ⬆️ ⬆️ ⬆️
 
       // Inicializar el carrusel DESPUÉS de insertar el HTML
@@ -252,13 +268,52 @@
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-  <script>
-    fetch('sesiones/contactos.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('contactos').innerHTML = data;
+<script>
+fetch('sesiones/contactos.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('contactos').innerHTML = data;
+
+    // ================================
+    // ANIMACIÓN AL APARECER EN SCROLL
+    // ================================
+
+    const tituloContacto     = document.querySelector("#contactTitle");
+    const subtituloContacto  = document.querySelector("#contactSubtitle");
+    const contactCamera      = document.querySelector("#contactCamera");   // <<--- AGREGADO
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+          // Activa animación del título
+          if (entry.target === tituloContacto) {
+            tituloContacto.classList.add("visible");
+          }
+
+          // Activa animación del subtítulo
+          if (entry.target === subtituloContacto) {
+            subtituloContacto.classList.add("visible");
+          }
+
+          // Activa animación del bloque con la cámara
+          if (entry.target === contactCamera) {    // <<--- AGREGADO
+            contactCamera.classList.add("visible");
+          }
+
+        }
       });
-  </script>
+    }, { threshold: 0.3 });
+
+    if (tituloContacto) observer.observe(tituloContacto);
+    if (subtituloContacto) observer.observe(subtituloContacto);
+    if (contactCamera) observer.observe(contactCamera);  // <<--- AGREGADO
+    
+  });
+</script>
+
+
+
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -343,28 +398,58 @@ Envie las fotos de referencia para tener una idea más clara.
 </div>
 
 <script>
-  function loadLanguage(lang) {
-    fetch(`./lang/${lang}.json`)
-      .then(response => response.json())
-      .then(texts => {
-        document.querySelectorAll("[data-key]").forEach(el => {
-          const key = el.getAttribute("data-key");
+function loadLanguage(lang) {
+  fetch(`./lang/${lang}.json`)
+    .then(response => response.json())
+    .then(texts => {
+      
+      // Texto y links para elementos con data-key
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
 
-          if (texts[key]) {
-            // 🔥 Si es un LINK, cambiar solo el href
-            if (el.tagName === "A") {
-              el.href = texts[key];
-            } else {
-              el.textContent = texts[key];
-            }
+        if (texts[key]) {
+
+          if (el.tagName === "A") {
+            el.href = texts[key];
+          } 
+          
+          // 🔥 AQUI AÑADES ESTO (justo debajo del caso <A>)
+          else if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+            el.placeholder = texts[key];
           }
-        });
 
-        // 🔥 Traducción del aria-label (si existe)
+          else {
+            el.textContent = texts[key];
+          }
+        }
+      });
+
+        // aria-labels
         document.querySelectorAll("[data-label]").forEach(el => {
           const labelKey = el.getAttribute("data-label");
-          if (texts[labelKey]) {
-            el.setAttribute("aria-label", texts[labelKey]);
+          if (texts[labelKey]) el.setAttribute("aria-label", texts[labelKey]);
+        });
+
+        // --- Nuevo: manejar elementos que usan data-link (buttons, divs, etc.)
+        document.querySelectorAll("[data-link]").forEach(el => {
+          const linkKey = el.getAttribute("data-link");
+          if (!texts[linkKey]) return;
+
+          const url = texts[linkKey];
+
+          // Si es un <a>, actualiza href como antes
+          if (el.tagName === "A") {
+            el.href = url;
+          } else {
+            // Para botones u otros elementos: asignar acción al hacer click
+            // Usamos el onclick (no addEventListener) para evitar varios listeners acumulados
+            el.onclick = (ev) => {
+              // si quieres abrir en la misma pestaña usa: window.location.href = url;
+              window.open(url, '_blank');
+            };
+
+            // opcional: guardar en data-href para inspección/debug
+            el.setAttribute('data-href', url);
           }
         });
       });
@@ -375,15 +460,9 @@ Envie las fotos de referencia para tener una idea más clara.
     const fabFlag = document.querySelector('.fab-flag');
     const menu = document.querySelector('.lang-menu');
 
-    // ----------------------------------------------
-    // ▶ Cargar idioma guardado
-    // ----------------------------------------------
     const savedLang = localStorage.getItem("lang") || "en";
     loadLanguage(savedLang);
 
-    // ----------------------------------------------
-    // ▶ ACTUALIZAR BANDERA
-    // ----------------------------------------------
     if (savedLang === "es") {
       fabFlag.src = "https://flagcdn.com/w40/es.png";
       fabFlag.alt = "Español";
@@ -392,7 +471,6 @@ Envie las fotos de referencia para tener una idea más clara.
       fabFlag.alt = "English";
     }
 
-    // Abrir/cerrar menú
     fab.addEventListener('click', (e) => {
       e.stopPropagation();
       menu.classList.toggle('show');
@@ -406,20 +484,13 @@ Envie las fotos de referencia para tener una idea más clara.
       e.stopPropagation();
     });
 
-    // Cambiar idioma manualmente
     document.querySelectorAll('.lang-item').forEach(item => {
       item.addEventListener('click', () => {
         const lang = item.getAttribute("data-lang");
         const newFlag = item.querySelector('img').src;
-
         fabFlag.src = newFlag;
-
-        // Guardar selección
         localStorage.setItem("lang", lang);
-
-        // Cargar textos
         loadLanguage(lang);
-
         menu.classList.remove('show');
       });
     });
