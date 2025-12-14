@@ -87,6 +87,11 @@
 "footer_COMMERCIAL": "© 2025 S&L COMMERCIAL WRAPS. All rights reserved.",
 
 "whatsappLink": "https://wa.me/19733326605?text=Hello%20I%20want%20more%20information%20about%20your%20services",
-"whatsappLabel": "Contact us on WhatsApp"
+"whatsappLabel": "Contact us on WhatsApp",
+
+
+"mail_subject": "Quote Request - {name} - S&L Commercial Wraps",
+"mail_body": "New quote request from the website:\n\nFull Name: {name}\nEmail: {email}\nPhone: {phone}\n\nProject description:\n{message}\n\n---\nPlease send reference photos to better understand your project."
+
 
 }

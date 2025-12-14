@@ -273,44 +273,28 @@ fetch('sesiones/contactos.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('contactos').innerHTML = data;
-
-    // ================================
-    // ANIMACIÓN AL APARECER EN SCROLL
-    // ================================
-
-    const tituloContacto     = document.querySelector("#contactTitle");
-    const subtituloContacto  = document.querySelector("#contactSubtitle");
-    const contactCamera      = document.querySelector("#contactCamera");   // <<--- AGREGADO
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-
-          // Activa animación del título
-          if (entry.target === tituloContacto) {
-            tituloContacto.classList.add("visible");
-          }
-
-          // Activa animación del subtítulo
-          if (entry.target === subtituloContacto) {
-            subtituloContacto.classList.add("visible");
-          }
-
-          // Activa animación del bloque con la cámara
-          if (entry.target === contactCamera) {    // <<--- AGREGADO
-            contactCamera.classList.add("visible");
-          }
-
-        }
-      });
-    }, { threshold: 0.3 });
-
-    if (tituloContacto) observer.observe(tituloContacto);
-    if (subtituloContacto) observer.observe(subtituloContacto);
-    if (contactCamera) observer.observe(contactCamera);  // <<--- AGREGADO
-    
+    activarAnimacionContacto(); // 👈 activar después de cargar
   });
+
+function activarAnimacionContacto() {
+
+  const elementos = document.querySelectorAll('#contactos .contact-animate');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  elementos.forEach(el => observer.observe(el));
+}
 </script>
+
 
 
 
@@ -318,61 +302,110 @@ fetch('sesiones/contactos.html')
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <script>
-  // Carga la sección Sobre Nosotros
-  fetch('sesiones/sobrenosotros.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('sobrenosotros').innerHTML = data;
-    })
-    .catch(error => console.error('Error cargando Sobre Nosotros:', error));
+  fetch('sesiones/sobrenosotros.html') 
+  .then(response => response.text()) 
+  .then(data => {
+    document.getElementById('sobrenosotros').innerHTML = data;
+    activarAnimacionSobreNosotros(); // 👈 clave
+  })
+  .catch(error => console.error('Error cargando Sobre Nosotros:', error));
 
-  // FUNCIÓN PARA ENVIAR EL CORREO (todo corregido y probado)
   function enviarPorMailto() {
-    const nombre   = document.getElementById("nombre").value.trim();
-    const email    = document.getElementById("email").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const mensaje  = document.getElementById("mensaje").value.trim();
 
-    // Validación correcta
-    if (!nombre || !email || !mensaje) {
-      alert("Por favor completa todos los campos obligatorios");
-      return;
-    }
+  const nombre   = document.getElementById("nombre").value.trim();
+  const email    = document.getElementById("email").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const mensaje  = document.getElementById("mensaje").value.trim();
 
-    const asunto = encodeURIComponent(`Cotización - ${nombre} - S&L Commercial Wraps`);
-
-    const cuerpo = encodeURIComponent(
-`Nueva solicitud de cotización desde la web:
-
-Nombre completo: ${nombre}
-Email: ${email}
-Teléfono: ${telefono || "No indicó"}
-
-Descripción del proyecto:
-${mensaje}
-
----
-Envie las fotos de referencia para tener una idea más clara.
-`.trim());
-
-    // Abre el correo
-    window.location.href = `mailto:slcommercialwraps@gmail.com?subject=${asunto}&body=${cuerpo}`;
-
-    // Limpia el formulario
-    document.getElementById("formularioCotizacion").reset();
-
+  if (!nombre || !email || !mensaje) {
+    alert(
+      currentTexts?.form_error || 
+      "Please complete all required fields"
+    );
+    return;
   }
+
+  const phoneText = telefono || (
+    currentTexts?.mail_no_phone || 
+    "Not provided"
+  );
+
+  // 🔹 ASUNTO
+  const subjectTemplate = currentTexts.mail_subject;
+  const subject = subjectTemplate.replace("{name}", nombre);
+
+  // 🔹 CUERPO
+  const bodyTemplate = currentTexts.mail_body;
+
+  const body = bodyTemplate
+    .replace("{name}", nombre)
+    .replace("{email}", email)
+    .replace("{phone}", phoneText)
+    .replace("{message}", mensaje);
+
+  window.location.href =
+    `mailto:slcommercialwraps@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  document.getElementById("formularioCotizacion").reset();
+}
+
+
+function activarAnimacionSobreNosotros() {
+
+  const elementos = document.querySelectorAll(
+    '#sobrenosotros .about-animate'
+  );
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  elementos.forEach(el => observer.observe(el));
+}
+</script>
+<script>
+  // 🌍 Idioma actual cargado
+  window.currentTexts = {};
 </script>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-  <script>
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      });
-  </script>
+<script>
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer').innerHTML = data;
+    activarAnimacionFooter(); // 👈 clave
+  });
+
+function activarAnimacionFooter() {
+
+  const elementos = document.querySelectorAll(
+    '#footer .footer-animate'
+  );
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  elementos.forEach(el => observer.observe(el));
+}
+</script>
+
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -402,7 +435,7 @@ function loadLanguage(lang) {
   fetch(`./lang/${lang}.json`)
     .then(response => response.json())
     .then(texts => {
-      
+      window.currentTexts = texts;
       // Texto y links para elementos con data-key
       document.querySelectorAll("[data-key]").forEach(el => {
         const key = el.getAttribute("data-key");
