@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
@@ -33,11 +34,11 @@
 
 <div id="cabecera"></div>
 <div id="inicio"></div>
+<div id="sobrenosotros"></div>
 <div id="servicio"></div>
 
 <div id="galeria"></div>
 <div id="contactos"></div>
-<div id="sobrenosotros"></div>
 <div id="footer"></div>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -116,8 +117,11 @@ fetch('cabecera.html')
       const container = document.getElementById('servicio');
       container.innerHTML = data;
 
-      // Espera mínimo para que el contenido exista
-      setTimeout(() => activarAnimacionServicio(), 200);
+      // Espera a que el DOM exista
+      setTimeout(() => {
+        activarAnimacionServicio();
+        initImageComparisons(); // 👈 MUY IMPORTANTE
+      }, 200);
     });
 
   /* 🔵 ANIMACIONES AL APARECER */
@@ -132,10 +136,8 @@ fetch('cabecera.html')
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-
           entry.target.classList.add('show');
           observer.unobserve(entry.target);
-
         }
       });
     }, { threshold: 0.2 });
@@ -145,10 +147,52 @@ fetch('cabecera.html')
     tarjetas.forEach(card => observer.observe(card));
     if (titulo2) observer.observe(titulo2);
     tarjetas2.forEach(card => observer.observe(card));
+  }
 
+  /* 🟡 BEFORE / AFTER – COMPARADOR DE IMÁGENES */
+  function initImageComparisons() {
+
+    document.querySelectorAll(".img-comp-container").forEach(container => {
+
+      const overlay = container.querySelector(".img-comp-overlay");
+      const slider = container.querySelector(".img-comp-slider");
+      if (!overlay || !slider) return;
+
+      let active = false;
+
+      const slide = (x) => {
+        const rect = container.getBoundingClientRect();
+        let pos = x - rect.left;
+
+        if (pos < 0) pos = 0;
+        if (pos > rect.width) pos = rect.width;
+
+        overlay.style.width = pos + "px";
+        slider.style.left = pos + "px";
+      };
+
+      // Inicial centrado
+      overlay.style.width = "50%";
+      slider.style.left = "50%";
+
+      // Mouse
+      slider.addEventListener("mousedown", () => active = true);
+      window.addEventListener("mouseup", () => active = false);
+      window.addEventListener("mousemove", e => {
+        if (active) slide(e.clientX);
+      });
+
+      // Touch (móvil)
+      slider.addEventListener("touchstart", () => active = true);
+      window.addEventListener("touchend", () => active = false);
+      window.addEventListener("touchmove", e => {
+        if (active) slide(e.touches[0].clientX);
+      });
+    });
   }
 
 </script>
+
 
 
 

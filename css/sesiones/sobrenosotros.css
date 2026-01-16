@@ -1,116 +1,206 @@
-
-        :root {
-            --azul: #3C83F7;
-            --naranja: #FF6B00;
-        }
-        .azul { color: var(--azul); }
-        .naranja { color: var(--naranja); }
-
-        .sobre-nosotros {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sobre-nosotros h2 {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: #1a1a1a;
-            letter-spacing: -1.5px;
-        }
-
-        .sobre-nosotros .lead {
-            font-size: 1.35rem;
-            color: #444;
-            font-weight: 500;
-        }
-
-        .card {
-            transition: all 0.4s ease;
-            border-radius: 20px;
-            border: none;
-            background: white;
-        }
-
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(60, 131, 247, 0.2) !important;
-        }
-
-        .card i {
-            transition: all 0.4s ease;
-        }
-
-        .card:hover i {
-            transform: scale(1.2) rotate(6deg);
-        }
-
-        .resumen-final {
-            max-width: 960px;
-            margin: 0 auto;
-            font-size: 1.3rem;
-            line-height: 2;
-            color: #333;
-            padding: 60px;
-        }
-
-        .resumen-final strong {
-            font-size: 1.55rem;
-        }
-
-        /* === RESPONSIVE PERFECCIONADO === */
-        @media (max-width: 992px) {
-            .sobre-nosotros h2 { font-size: 2.8rem; }
-            .sobre-nosotros .lead { font-size: 1.25rem; }
-        }
-
-        @media (max-width: 768px) {
-            .sobre-nosotros {
-                padding: 80px 15px;
-            }
-            .sobre-nosotros h2 {
-                font-size: 2.4rem !important;
-                line-height: 1.2;
-            }
-            .sobre-nosotros .lead {
-                font-size: 1.15rem;
-            }
-            .card {
-                margin-bottom: 30px;
-            }
-            .card i {
-                font-size: 3.8rem !important;
-            }
-            .resumen-final {
-                font-size: 1.15rem;
-                padding: 0 10px;
-            }
-            .resumen-final strong {
-                font-size: 1.4rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sobre-nosotros h2 {
-                font-size: 2.1rem !important;
-            }
-            .card i {
-                font-size: 3.4rem !important;
-            }
-            .resumen-final {
-                font-size: 1.1rem;
-                line-height: 1.9;
-            }
-        }
-
-
-.about-animate {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+/* ===== VARIABLES DE MARCA ===== */
+:root {
+  --gold: #EAC93F;
+  --navy: #0F1729;
+  --brown: #2F1C02;
+  --gray: #6D7475;
+  --light-bg: #CBD0D6;
+  --white: #ffffff;
+  --black: #000000;
 }
 
-.about-animate.show {
-  opacity: 1;
-  transform: translateY(0);
+/* ===== BASE ===== */
+.about-us {
+  background-color: #FFFFFF;
+  padding: 80px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== GRID ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ===== TEXTO ===== */
+.about-badge {
+  display: inline-block;
+  background: rgba(234, 201, 63, 0.1);
+  border-left: 4px solid var(--gold);
+  padding: 8px 16px;
+  margin-bottom: 24px;
+}
+
+.about-badge span {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.about-title {
+  font-size: 56px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 24px;
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.about-title span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.about-description p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.about-description strong {
+  color: var(--navy);
+}
+
+.highlight {
+  color: var(--gold);
+}
+
+/* ===== FEATURES ===== */
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin-top: 32px;
+}
+
+.about-features li {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.about-features .icon {
+  font-family: "Material Symbols Outlined";
+  font-size: 28px;
+  color: var(--gold);
+  background: rgba(234, 201, 63, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.about-features h4 {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--navy);
+}
+
+.about-features p {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+/* ===== IMAGEN ===== */
+.about-image {
+  position: relative;
+}
+
+.image-frame {
+  position: absolute;
+  inset: -16px;
+  background: rgba(234, 201, 63, 0.1);
+  border-radius: 16px;
+  transform: rotate(1deg);
+  transition: transform 0.6s ease;
+}
+
+.about-image:hover .image-frame {
+  transform: rotate(0deg);
+}
+
+.about-image img {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+/* ===== CALLOUT ===== */
+.callout {
+  position: absolute;
+  bottom: -32px;
+  right: -32px;
+  background: var(--black);
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 4px solid var(--gold);
+}
+
+.callout small {
+  color: #aaa;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.callout strong {
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.call-icon {
+  font-family: "Material Symbols Outlined";
+  background: var(--gold);
+  color: var(--black);
+  padding: 16px;
+  border-radius: 50%;
+  font-size: 28px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-image img {
+    height: 420px;
+  }
+
+  .callout {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-title {
+    font-size: 38px;
+  }
+
+  .about-description p {
+    font-size: 16px;
+  }
+
+  .about-image img {
+    height: 280px;
+  }
 }
