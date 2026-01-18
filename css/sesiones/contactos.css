@@ -1,72 +1,100 @@
-
-  .naranja { color: #FF5608; }
-
-  /* Botón gradiente */
-  .btn-gradient {
-    background: linear-gradient(to right, #3881ee, #f37940);
-    color: white;
-    font-weight: bold;
-    border: none;
-    transition: all 0.3s ease;
-  }
-  .btn-gradient:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 86, 8, 0.4);
-    color: white;
-  }
-
-  /* Degradado cajas derechas */
-  .bg-gradient-right {
-    background: linear-gradient(135deg, #83aff1 0%, #f3af90 100%);
-  }
-
-  /* Iconos cuadrados - tamaño normal */
-  .icon-square {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    color: white;
-    flex-shrink: 0;
-  }
-  .bg-orange { background-color: #FF5608; }
-
-  /* RESPONSIVE: iconos más pequeños en móviles */
-  @media (max-width: 576px) {
-    .icon-square {
-      width: 40px;
-      height: 40px;
-      font-size: 1.1rem;
-      border-radius: 10px;
-    }
-    .contact-item {
-      font-size: 0.95rem;
-    }
-    .contact-item strong {
-      font-size: 1rem;
-    }
-  }
-
-  /* En pantallas muy pequeñas el texto no se aplasta */
-  @media (max-width: 400px) {
-    .icon-square {
-      width: 38px;
-      height: 38px;
-      font-size: 1rem;
-    }
-  }
-
-  /*///////////////////////////////////////////ANIMACIONES////////////////////////////////////////////*/
-.contact-animate {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+:root {
+  --gold: #EAC93F;
+  --black-pure: #000000;
+  --gray-darker: #0d0d0d;
 }
 
-.contact-animate.show {
-  opacity: 1;
-  transform: translateY(0);
+/* Limitamos el tamaño del contenedor para que no sea tan ancho */
+.container-elite-compact {
+  max-width: 1050px !important;
+}
+
+.main-contact-card {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bg-gray-darker { background-color: var(--gray-darker); }
+.bg-black-pure { background-color: var(--black-pure); }
+.text-gold { color: var(--gold); }
+
+/* Etiquetas de formulario */
+.label-elite {
+  display: block;
+  font-size: 20px;
+  font-weight: 900;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+.text-gold.font-black { 
+  display: inline-block;
+  background: rgba(234, 201, 63, 0.1);
+  border-left: 4px solid var(--gold);
+  padding: 3px 8px;
+  margin-bottom: 24px;
+}
+
+/* Inputs minimalistas */
+.input-elite {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 0;
+  color: white;
+  font-size: 0.95rem;
+  border-radius: 0;
+  transition: 0.3s ease;
+}
+
+.input-elite:focus {
+  outline: none;
+  border-bottom-color: var(--gold);
+}
+
+/* Botón Compacto */
+.btn-elite-gold {
+  background-color: var(--gold);
+  color: black;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.btn-elite-gold:hover {
+  transform: translateY(-3px);
+  background-color: #f7d95a;
+  box-shadow: 0 10px 30px rgba(234, 201, 63, 0.3);
+}
+
+/* Iconos miniatura */
+.icon-box-mini {
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--gold);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  border: 1px solid rgba(234, 201, 63, 0.1);
+}
+
+/* Helpers */
+.x-small { font-size: 20px; }
+.text-gray-400 { color: #888 !important; }
+.border-start-custom { border-left: 1px solid rgba(255, 255, 255, 0.05); }
+.border-top-custom { border-top: 1px solid rgba(255, 255, 255, 0.05); }
+
+@media (max-width: 768px) {
+  .border-start-custom { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+  .container-elite-compact { padding: 0 20px; }
 }

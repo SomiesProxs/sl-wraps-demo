@@ -1,107 +1,169 @@
-.azul { color: #0A68FF; }
+/* --- BASE --- */
+.fondogaleria {
+  background-color: #0A0A0A; /* Fondo Negro */
+  color: #FFFFFF;
+  padding: 40px 0;
+}
 
-.galeria-title {
-  display: inline-block;
+.dorado-text { color: #EAC93F; }
+.dorado-brillo { 
+  color: #EAC93F; 
+  text-shadow: 0 0 15px rgba(234, 201, 63, 0.4); 
+}
+
+/* --- BOTONES --- */
+.btn-toggle-custom {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(234, 201, 63, 0.5);
+  padding: 12px 30px;
+  border-radius: 0px; 
+  font-weight: 700;
+  transition: all 0.4s ease-in-out;
+  letter-spacing: 2px;
+}
+
+.btn-toggle-custom:hover, .btn-toggle-custom.active {
+  background: #EAC93F;
+  color: #0A0A0A;
+  border-color: #EAC93F;
+  box-shadow: 0 0 20px rgba(234, 201, 63, 0.4); 
+}
+
+/* --- TARJETAS --- */
+.gallery-item .inner-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid rgba(234, 201, 63, 0.15);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item img, .gallery-item video {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) brightness(0.7); 
+  transition: all 0.7s ease;
+}
+
+.gallery-item:hover .inner-card {
+  border: 1px solid #EAC93F; 
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  transform: translateY(-5px);
+}
+
+.gallery-item:hover img, .gallery-item:hover video {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.1);
+}
+
+/* --- OVERLAY TEXTO --- */
+.overlay-custom {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10, 10, 10, 0.7); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
-  transform: translateY(25px) scale(0.95);
+  transition: opacity 0.4s ease;
 }
 
-/* Cuando aparece */
-.galeria-title.show {
-  animation: galeriaAppear 1s ease-out forwards;
+.gallery-item:hover .overlay-custom {
+  opacity: 1;
 }
 
-/* Movimiento suave continuo */
-.galeria-title.float {
-  animation: floatTitle 3s ease-in-out infinite;
+.text-hover {
+  text-align: center;
+  transform: translateY(15px);
+  transition: transform 0.4s ease-out;
+}
+
+.gallery-item:hover .text-hover {
+  transform: translateY(0);
+}
+
+.view-text {
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  border-bottom: 2px solid #EAC93F;
+  padding-bottom: 5px;
+}
+
+/* --- TRANSICIÓN DEL MODAL --- */
+.modal-backdrop.show {
+  opacity: 0.93;
+  background-color: #000;
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s ease;
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+#modalContent img, #modalContent video {
+  max-height: 85vh;
+  border: 2px solid #EAC93F; 
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(234, 201, 63, 0.5); 
 }
 
 .gallery-animated-title {
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  transition: all 1s ease-out;
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase; /* Esta fuente se ve mejor en mayúsculas */
+  letter-spacing: 2px;       /* Un poco de aire entre letras para que se vea Élite */
+}
+/* ============================================================
+   MODO RESPONSIVE (CELULARES Y TABLETS)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .fondogaleria {
+    padding: 40px 0; /* Menos espacio arriba/abajo en móvil */
+  }
+
+  .gallery-animated-title {
+    font-size: 2.5rem; /* Título más pequeño en móvil */
+  }
+
+  .btn-toggle-custom {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    width: 45%; /* Los botones se ajustan lado a lado */
+  }
+
+  .view-text {
+    font-size: 0.8rem; /* Texto de hover más pequeño */
+    letter-spacing: 1px;
+  }
+
+  /* En móviles, el overlay puede ser un poco más visible siempre 
+     para que el usuario sepa que es clickeable */
+  .overlay-custom {
+    background: rgba(10, 10, 10, 0.4);
+    opacity: 0.8; 
+  }
 }
 
-.gallery-animated-title.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+@media (max-width: 480px) {
+  .btn-toggle-custom {
+    width: 100%; /* Botones uno arriba del otro en pantallas muy pequeñas */
+  }
+  
+  #modalContent img, #modalContent video {
+    max-height: 70vh; /* Imagen más pequeña en modal para que no tape todo */
+    width: 95%; /* Que no toque los bordes laterales */
+  }
 }
-
-/* ============================
-   ÍTEMS (fotos y videos)
-============================ */
-.gallery-item {
-  opacity: 0;
-  transform: scale(0.85) translateY(20px);
-  transition: all 0.9s ease-out;
-}
-
-.gallery-item.show {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-/* Separación perfecta */
-#gallery { --gap: 1.2rem; }
-@media (min-width: 576px)  { #gallery { --gap: 1.0rem; } }
-@media (min-width: 768px)  { #gallery { --gap: 1.0rem; } }
-@media (min-width: 1200px) { #gallery { --gap: 1.0rem; } }
-
-.row { margin-left: calc(var(--gap)/-2); margin-right: calc(var(--gap)/-2); }
-#gallery > [class*="col-"] { padding-left: calc(var(--gap)/2); padding-right: calc(var(--gap)/2); padding-bottom: var(--gap); }
-
-/* Contenedor general (igual para fotos y vídeos) */
-.gallery-item .inner {
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  aspect-ratio: 16 / 9;           /* ← Horizontal perfecto para TODOS */
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
-.gallery-item:hover .inner {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
-}
-
-/* FOTOS → con zoom bonito (como te gusta) */
-.gallery-item.foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.18);
-  transition: transform 0.6s ease;
-}
-.gallery-item.foto:hover img {
-  transform: scale(1.35);
-}
-
-/* VÍDEOS → SIN NINGÚN ZOOM, se ven completos y perfectos */
-.gallery-item.video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: none !important;          /* ← Zoom eliminado 100% */
-  transition: none !important;
-}
-
-/* Overlay (igual para ambos) */
-.overlay {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 20px;
-  background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
-  color: white; font-weight: 600; font-size: 1.05rem;
-  opacity: 0; transform: translateY(15px);
-  transition: all 0.4s ease; pointer-events: none;
-}
-.gallery-item:hover .overlay { opacity: 1; transform: translateY(0); }
-
-/* Botones y modal (sin cambios) */
-.btn-toggle { min-width: 200px; padding: 16px 40px; font-size: 1.3rem; font-weight: 600;
-  border: 3px solid #ddd; border-radius: 50px; transition: all 0.3s ease; }
-.btn-toggle:not(.active) { background: transparent; color: #555; }
-.btn-toggle.active { background: white; color: #000; border-color: #000;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-
-.modal-content.bg-black { background: rgba(0,0,0,0.95); }
-.btn-close-white { filter: invert(1); font-size: 2rem; opacity: 0.9; }

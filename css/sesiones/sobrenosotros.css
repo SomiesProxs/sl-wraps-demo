@@ -55,6 +55,7 @@
   font-family: "Bowlby One SC", sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-transform: uppercase; /* Esta fuente se ve mejor en mayúsculas */
   
 }
 

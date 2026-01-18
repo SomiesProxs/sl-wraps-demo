@@ -7,124 +7,95 @@
   <title>Our Work</title>
 </head>
 
-<section class="py-5" style="background-color:#FFFAE4;">
-  <div class="container py-5">
-
-    <!-- Título y subtítulo centrados -->
-<div class="text-center mb-5 contact-animate">
-  <h2 id="contactTitle" class="display-5 fw-bold">
-    <span data-key="contacto_title_part1">Let’s talk about your </span>
-    <span class="naranja" data-key="contacto_title_part2">Project!</span>
-  </h2>
-
-  <p data-key="contacto_subtitle" class="lead text-muted">
-    Fill out the form and receive a personalized quote in less than 24 hours
-  </p>
-</div>
-
-
-
-    <div class="row g-5 align-items-start">
-<div id="contactCamera"
-     class="mt-4 p-4 bg-warning bg-opacity-10 border border-warning border-2 rounded-4 contact-animate">
-  <div class="text-center">
-    <i class="fas fa-camera fa-2x text-warning mb-3"></i>
-    <p data-key="contacto_descripcion" class="mb-0 fw-bold text-dark fs-5">
-      Don't forget to attach your photos directly to the email so we can see your vehicle and offer you a better proposal.
-    </p>
-  </div>
-</div>
-
-
-      <!-- ===== LADO IZQUIERDO: Formulario ===== -->
-<div class="col-lg-7 contact-animate">
-  <div class="bg-white p-4 p-md-5 rounded-4 shadow-lg" style="border-radius:20px;">
+<section class="py-5 bg-white" id="contact">
+  <div class="container container-elite-compact">
     
-    <!-- AÑADÍ: novalidate + quité el action vacío -->
-    <form id="formularioCotizacion" novalidate>
-
-      <div class="mb-4">
-        <label data-key="contacto_fullname" class="form-label fw-bold">Full Name <span class="text-danger">*</span></label>
-        <input type="text" id="nombre" class="form-control form-control-lg rounded-pill" placeholder="Juan Pérez" required>
-      </div>
-
-      <div class="mb-4">
-        <label data-key="contacto_email" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
-        <input data-key="contacto_ejemplo" type="email" id="email" class="form-control form-control-lg rounded-pill" placeholder="juan@example.com" required>
-      </div>
-
-      <div class="mb-4">
-        <label data-key="contacto_phone" class="form-label fw-bold">Phone</label>
-        <input data-key="contacto_number" type="tel" id="telefono" class="form-control form-control-lg rounded-pill" placeholder="Your number">
-      </div>
-
-      <div class="mb-4">
-        <label data-key="contacto_projectdescription" class="form-label fw-bold">Project Description</label>
-        <textarea data-key="contacto_projectdescription2" id="mensaje" class="form-control rounded-3" rows="6" placeholder="Tell us about your vehicle and what type of wrap you need..." required></textarea>
-      </div>
-
-      <div class="text-center mt-4">
-        <!-- Cambié type="button" para que no intente enviar el form solo -->
-        <button data-key="contacto_sendquote" type="button" onclick="enviarPorMailto()" class="btn btn-lg px-5 py-3 rounded-pill shadow btn-gradient text-white">
-          Send Quote
-        </button>
-      </div>
-    </form>
-  </div>
-</div>
-
-      <!-- ===== LADO DERECHO: Información ===== -->
-      <div class="col-lg-5 contact-animate">
-
-        <!-- Información de Contacto -->
-        <div class="bg-gradient-right p-4 p-md-5 rounded-4 shadow mb-4 text-white contact-animate">
-          <h4 data-key="contacto_contact" class="fw-bold mb-4">Contact Information</h4>
-          
-          <div class="d-flex align-items-start mb-4 contact-item">
-            <div class="icon-square bg-primary me-3 flex-shrink-0">
-              <i class="fas fa-envelope"></i>
+    <div class="main-contact-card overflow-hidden shadow-2xl">
+      <div class="row g-0">
+        
+        <div class="col-md-7 p-4 p-lg-5 bg-black-pure">
+          <form id="formularioCotizacion" class="form-spacing" novalidate>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <label data-key="contacto_fullname" class="label-elite">Full Name</label>
+                <input type="text" id="nombre" class="input-elite" placeholder="Juan Pérez" required>
+              </div>
+              <div class="col-md-6">
+                <label data-key="contacto_email" class="label-elite">Email Address</label>
+                <input type="email" id="email" class="input-elite" placeholder="juan@example.com" required>
+              </div>
             </div>
+
+            <div class="mt-4">
+              <label data-key="contacto_phone" class="label-elite">Phone</label>
+              <input type="tel" id="telefono" class="input-elite" placeholder="Your number">
+            </div>
+
+            <div class="mt-4">
+              <label data-key="contacto_projectdescription" class="label-elite">Project Description</label>
+              <textarea id="mensaje" class="input-elite" rows="3" placeholder="Number of vehicles, model types..."></textarea>
+            </div>
+
+            <div class="camera-tip-elite mt-4">
+              <i class="fas fa-camera text-gold me-2"></i>
+              <span data-key="contacto_descripcion" class="text-gray-400 small">Attach photos to the email for a faster proposal.</span>
+            </div>
+
+            <div class="mt-5">
+              <button data-key="contacto_sendquote" type="button" onclick="enviarPorMailto()" class="btn-elite-gold w-100">
+                Secure My Proposal
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-5 bg-gray-darker p-4 p-lg-5 border-start-custom">
+          <div class="h-100 d-flex flex-column justify-content-between">
             <div>
-              <strong data-key="contacto_email">Email</strong><br>
-              <a href="mailto:slcommercialwraps@gmail.com" class="text-white text-decoration-underline">
-                slcommercialwraps@gmail.com
-              </a>
-            </div>
-          </div>
+              <span class="text-gold font-black uppercase tracking-widest x-small">Contact</span>
+              <h2 id="contactTitle" class="h3 font-black uppercase mt-3 mb-4 text-white italic">
+                <span data-key="contacto_title_part1">Let’s talk about your </span><br/>
+                <span class="text-gold" data-key="contacto_title_part2">Project!</span>
+              </h2>
+              
+              <div class="contact-items-spacing">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="icon-box-mini"><i class="fas fa-envelope"></i></div>
+                  <div>
+                    <h4 data-key="contacto_email" class="text-white small font-black mb-0 uppercase tracking-tighter">Email</h4>
+                    <small class="text-gray-400">slcommercialwraps@gmail.com</small>
+                  </div>
+                </div>
 
-          <div class="d-flex align-items-start mb-4 contact-item">
-            <div class="icon-square bg-orange me-3 flex-shrink-0">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <div>
-              <strong data-key="contacto_phone">Phone</strong><br>
-              <e data-key="contacto_subphone">Available by WhatsApp</e>
-            </div>
-          </div>
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div class="icon-box-mini"><i class="fab fa-whatsapp"></i></div>
+                  <div>
+                    <h4 data-key="contacto_phone" class="text-white small font-black mb-0 uppercase tracking-tighter">Phone</h4>
+                    <small class="text-gray-400" data-key="contacto_subphone">Available by WhatsApp</small>
+                  </div>
+                </div>
 
-          <div class="d-flex align-items-start contact-item">
-            <div class="icon-square bg-primary me-3 flex-shrink-0">
-              <i class="fas fa-map-marker-alt"></i>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="icon-box-mini"><i class="fas fa-map-marker-alt"></i></div>
+                  <div>
+                    <h4 data-key="contacto_location" class="text-white small font-black mb-0 uppercase tracking-tighter">Location</h4>
+                    <small class="text-gray-400">Lakewood, NJ, USA</small>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div>
-              <strong data-key="contacto_location"></strong>Location</strong><br>
-              Lakewood, NJ, United States
+
+            <div class="mt-5 pt-4 border-top-custom">
+              <h4 data-key="contacto_customer" class="text-white x-small font-black uppercase mb-3 tracking-widest">Hours</h4>
+              <ul class="list-unstyled text-gray-400 x-small m-0">
+                <li class="d-flex justify-content-between mb-1"><span>Monday - Friday:</span> <strong>8am - 6pm</strong></li>
+                <li class="d-flex justify-content-between"><span>Saturday:</span> <strong>9am - 4pm</strong></li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- Horario de Atención -->
-        <div class="bg-white p-4 p-md-5 rounded-4 shadow contact-animate">
-          <h4 data-key="contacto_customer" class="fw-bold mb-4">Customer service hours</h4>
-          <ul class="list-unstyled mb-0 lh-lg fs-5">
-            <li><strong data-key="contacto_mondey">Monday - Friday:</strong> 8:00 AM - 6:00 PM</li>
-            <li><strong data-key="contacto_saturday">Saturday:</strong> 9:00 AM - 4:00 PM</li>
-            <li><strong data-key="contacto_sunday">Sunday:</strong> <e data-key="contacto_closed">Closed</e></li>
-          </ul>
-        </div>
       </div>
-
     </div>
-    
   </div>
 </section>
