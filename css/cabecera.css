@@ -16,7 +16,7 @@
     font-family: "Rowdies", sans-serif;
     font-weight: 300;
     font-style: normal;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     letter-spacing: 1.5px; /* Espacio entre letras */
     text-transform: uppercase; /* MAYÚSCULAS */
     position: relative;
@@ -48,7 +48,7 @@
     text-shadow: 0 0 8px rgba(223, 174, 52, 0.3); /* Brillo suave */
 }
 .logo-responsive {
-    height: 60px;
+    height: 50px;
     width: auto;
     transition: all 0.3s ease;
 }

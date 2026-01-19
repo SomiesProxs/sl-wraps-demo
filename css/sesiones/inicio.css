@@ -60,7 +60,7 @@
 
 .carousel-item img {
   object-fit: cover;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 66px);
   width: 100%;
 }
 
