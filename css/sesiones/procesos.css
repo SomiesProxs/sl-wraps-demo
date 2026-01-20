@@ -1,1 +1,134 @@
+/* --- CONFIGURACIÓN DE SECCIÓN --- */
+.process-section-elite {
+  background-color: #000000;
+  padding: 60px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
 
+/* --- TÍTULOS --- */
+.process-tag {
+  font-family: "Bowlby One SC", sans-serif;
+  color: #EAC93F;
+  font-size: 12px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.process-main-title {
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.process-main-title .text-gold {
+  color: #EAC93F;
+  text-shadow: 0 0 20px rgba(234, 201, 63, 0.3);
+}
+
+.process-divider {
+  width: 80px;
+  height: 5px;
+  background: #EAC93F;
+  margin: 0 auto 20px;
+}
+
+/* --- CARDS DE PASOS --- */
+.process-step-card {
+  text-align: center;
+  padding: 3px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+/* Contenedor de Icono */
+.icon-container {
+  width: 80px;
+  height: 80px;
+  background: #0a0a0a;
+  border: 2px solid rgba(234, 201, 63, 0.2);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  position: relative;
+  transition: all 0.4s ease;
+  color: #EAC93F;
+  font-size: 1.8rem;
+}
+
+.process-step-card:hover .icon-container {
+  border-color: #EAC93F;
+  transform: translateY(-10px) rotate(5deg);
+  box-shadow: 0 0 30px rgba(234, 201, 63, 0.2);
+}
+
+/* Número Flotante */
+.step-number {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #EAC93F;
+  color: black;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 12px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Títulos de pasos */
+.step-title {
+  color: white;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.process-step-card:hover .step-title {
+  color: #EAC93F;
+}
+
+/* Descripción */
+.step-desc {
+  color: #666;
+  font-size: 11px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* --- LÍNEA DE CONEXIÓN (Solo escritorio) --- */
+@media (min-width: 768px) {
+  .col-md-3:not(:last-child) .process-step-card::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    right: -25%;
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(234, 201, 63, 0.3) 0%, transparent 100%);
+    z-index: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .process-step-card { margin-bottom: 40px; }
+}

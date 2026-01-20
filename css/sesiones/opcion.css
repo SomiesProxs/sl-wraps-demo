@@ -1,0 +1,81 @@
+/* --- SECCIÓN BASE --- */
+.benefits-section-black {
+  background-color: #000000;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- GRID Y BORDES DIVISORES --- */
+.benefits-grid {
+  border: 1px solid rgba(234, 201, 63, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.benefit-item {
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.4s ease;
+}
+
+.benefit-item:hover {
+  background: linear-gradient(to bottom, rgba(234, 201, 63, 0.05), transparent);
+}
+
+/* --- CARDS --- */
+.benefit-card {
+  padding: 50px 30px;
+  text-align: center;
+}
+
+/* Iconos */
+.benefit-icon-wrapper {
+  color: #EAC93F;
+  font-size: 3rem;
+  margin-bottom: 25px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(234, 201, 63, 0.3);
+}
+
+.benefit-item:hover .benefit-icon-wrapper {
+  transform: scale(1.1) translateY(-10px);
+}
+
+/* Títulos con Bowlby One SC */
+.benefit-title {
+  font-family: "Bowlby One SC", sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.benefit-item:hover .benefit-title {
+  color: #EAC93F;
+}
+
+/* Textos secundarios */
+.benefit-text {
+  color: #888888;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 991px) {
+  .benefits-grid {
+    border: none;
+  }
+  .benefit-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .benefit-card {
+    padding: 40px 20px;
+  }
+}

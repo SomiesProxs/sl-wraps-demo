@@ -34,11 +34,14 @@
 
 <div id="cabecera"></div>
 <div id="inicio"></div>
-<div id="procesos"></div>
 <div id="sobrenosotros"></div>
+<div id="procesos"></div>
 <div id="servicio"></div>
 
 <div id="galeria"></div>
+<div id="ejecucion"></div>
+<div id="clientes"></div>
+<div id="opcion"></div>
 <div id="contactos"></div>
 <div id="footer"></div>
 
@@ -99,6 +102,49 @@ fetch('cabecera.html')
 </script>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<script>
+fetch('sesiones/procesos.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('procesos').innerHTML = html;
+  });
+</script>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<script>
+fetch('sesiones/ejecucion.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('ejecucion').innerHTML = html;
+  });
+</script>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<script>
+fetch('sesiones/opcion.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('opcion').innerHTML = html;
+  });
+</script>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<script>
+fetch('sesiones/clientes.html')
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById('clientes').innerHTML = html;
+  });
+</script>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 <script>
 
   /* 🔵 FUNCIÓN PARA HACER SCROLL SUAVE */

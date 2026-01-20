@@ -1,0 +1,258 @@
+.about-ejecucion {
+  background-color: #FFFFFF;
+  padding: 100px 0;
+}
+
+/* --- IMAGEN MÁS GRANDE --- */
+.execution-img-large {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 40px 0 40px 0;
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+  border: 1px solid #f0f0f0;
+  display: block;
+}
+/* --- CONFIGURACIÓN DE FUENTES --- */
+.font-bowlby {
+  font-family: "Bowlby One SC", sans-serif;
+  font-weight: 400;
+}
+
+/* --- TÍTULO EDITORIAL --- */
+.execution-main-title {
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  font-style: italic;
+  color: #000;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #000;
+}
+
+.dorado-glow {
+  color: #EAC93F;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+}
+
+.execution-lead-text {
+  color: #3a3a3a;
+  font-size: 1.15rem;
+  border-left: 4px solid #EAC93F;
+  padding-left: 20px;
+}
+
+/* --- COMPOSICIÓN VISUAL (IZQUIERDA) --- */
+.execution-visual-stack {
+  position: relative;
+  padding: 20px;
+}
+
+.main-image-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.execution-img {
+  border-radius: 40px 0 40px 0; /* Forma asimétrica para que no sea simple */
+  box-shadow: 30px 30px 80px rgba(0,0,0,0.15);
+}
+
+.shape-gold-blob {
+  position: absolute;
+  top: 0; left: 0;
+  width: 250px; height: 250px;
+  background: #EAC93F;
+  opacity: 0.1;
+  filter: blur(50px);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.stat-overlap-card {
+  position: absolute;
+  bottom: 10%; right: 0;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 20px;
+  z-index: 3;
+  text-align: center;
+}
+
+.active-badge-glass {
+  position: absolute;
+  top: 30px; left: -20px;
+  background: rgba(255,255,255,0.9);
+  padding: 12px 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+/* --- TIMELINE DE PASOS --- */
+.custom-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+}
+
+.timeline-num {
+  font-size: 1.5rem;
+  color: #eee; /* Color base */
+  transition: 0.3s;
+}
+
+.timeline-item:hover .timeline-num {
+  color: #EAC93F;
+}
+
+.timeline-info h4 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  color: #222;
+}
+
+.timeline-info p {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* --- BOTÓN ELITE --- */
+.btn-elite-action-gold {
+  display: inline-flex;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  padding: 18px 40px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: "Bowlby One SC", sans-serif;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  transition: 0.4s;
+}
+
+.btn-elite-action-gold:hover {
+  background: #EAC93F;
+  color: #000;
+  box-shadow: 0 15px 30px rgba(234, 201, 63, 0.4);
+}
+
+/* Animación de Pulso */
+.pulse-dot-gold {
+  width: 10px; height: 10px;
+  background: #EAC93F;
+  border-radius: 50%;
+  animation: pulse-gold 2s infinite;
+}
+
+@keyframes pulse-gold {
+  0% { box-shadow: 0 0 0 0 rgba(234, 201, 63, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(234, 201, 63, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(234, 201, 63, 0); }
+}
+
+@media (max-width: 991px) {
+  /* ESTA ES LA REGLA CLAVE: Oculta todo el bloque visual de la izquierda */
+  .execution-visual-stack {
+    display: none !important;
+  }
+  .about-ejecucion {
+    padding: 60px 0;
+  }
+
+  /* Centrar el texto en móviles para que se vea ordenado */
+  .execution-main-title {
+    text-align: center;
+    font-size: 2.5rem; /* Un poco más chico para que no rompa líneas */
+    margin-bottom: 30px;
+  }
+
+  .execution-lead-text {
+    text-align: center;
+    border-left: none;
+    border-top: 3px solid #EAC93F;
+    padding: 20px 0 0 0;
+    margin-bottom: 40px;
+  }
+
+  /* Ajuste de la Imagen en Móvil */
+  .execution-visual-stack {
+    padding: 0; 
+    margin-bottom: 50px; /* Espacio para que el badge no choque con el texto */
+  }
+
+  .execution-img-large {
+    border-radius: 20px; /* Menos agresivo en pantallas chicas */
+    min-height: auto; /* Quitamos el min-height para que no se estire raro */
+  }
+
+  /* El Badge: lo movemos a una posición segura dentro de la imagen */
+  .active-badge-glass {
+    top: 15px;
+    left: 15px; /* En lugar de -20px para que no se corte al salir de la pantalla */
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+
+  /* La tarjeta de stat (100% Precision) la ocultamos o la centramos */
+  .stat-overlap-card {
+    bottom: -15px;
+    right: 15px;
+    padding: 10px 20px;
+    transform: scale(0.9);
+  }
+
+  /* Timeline en móvil */
+  .timeline-item {
+    flex-direction: column; /* Icono arriba, texto abajo */
+    text-align: center;
+    gap: 10px;
+  }
+
+  .custom-timeline {
+    gap: 10px;
+  }
+
+  .btn-elite-action-gold {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Botón ancho completo en móvil es más fácil de tocar */
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas (iPhone SE, etc) */
+@media (max-width: 480px) {
+  /* ESTA ES LA REGLA CLAVE: Oculta todo el bloque visual de la izquierda */
+  .execution-visual-stack {
+    display: none !important;
+  }
+  .execution-main-title {
+    font-size: 2rem;
+  }
+  
+  .active-badge-glass {
+    display: none; /* Opcional: ocultar si la pantalla es demasiado pequeña para evitar ruido */
+  }
+}
