@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bowlby+One+SC&family=Dancing+Script:wght@400..700&family=Luckiest+Guy&family=Rowdies:wght@300;400;700&display=swap');
 
+html, body {
+  overflow-x: hidden; /* Corta cualquier cosa que intente salirse por los lados */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
+section {
+  width: 100%;
+  overflow: hidden; /* Protege cada sección individualmente */
+}
 
 
 /* ------ Versión original (Desktop) ------ */
